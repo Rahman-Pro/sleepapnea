@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Apnea Articles & Resources | SleepApneaBD</title>
+  <meta name="description" content="Learn about sleep apnea, CPAP therapy, snoring treatment, and healthy sleep habits from Bangladesh's leading sleep clinic." />
+  <meta name="keywords" content="sleep apnea articles, CPAP therapy guide, snoring treatment Bangladesh, insomnia tips, sleep hygiene" />
+  <meta property="og:title" content="Sleep Apnea Articles & Resources | SleepApneaBD" />
+  <meta property="og:description" content="Learn about sleep apnea, CPAP therapy, snoring treatment, and healthy sleep habits from Bangladesh's leading sleep clinic." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --bg: #020617;
+      --bg-secondary: #0f172a;
+      --bg-card: rgba(255,255,255,0.05);
+      --border-glass: rgba(255,255,255,0.1);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-green: #06d6a0;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --gradient: linear-gradient(135deg, #06d6a0, #3b82f6, #8b5cf6);
+      --gradient-btn: linear-gradient(135deg, #06d6a0 0%, #3b82f6 100%);
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.4);
+      --nav-height: 72px;
+      --transition: all 0.3s ease;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-secondary: #e2e8f0;
+      --bg-card: rgba(255,255,255,0.8);
+      --border-glass: rgba(0,0,0,0.1);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Background Orbs */
+    .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; animation: floatOrb 20s ease-in-out infinite; }
+    [data-theme="light"] .orb { opacity: 0.10; }
+    .orb-1 { width: 600px; height: 600px; background: #06d6a0; top: -200px; left: -200px; animation-delay: 0s; }
+    .orb-2 { width: 500px; height: 500px; background: #3b82f6; top: 30%; right: -150px; animation-delay: -7s; }
+    .orb-3 { width: 400px; height: 400px; background: #8b5cf6; bottom: -100px; left: 30%; animation-delay: -14s; }
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -60px) scale(1.1); }
+      66% { transform: translate(-30px, 40px) scale(0.9); }
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 1rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-glass);
+      transition: var(--transition);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--gradient-btn); color: #fff; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6,214,160,0.4); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-glass); backdrop-filter: blur(10px); }
+    .btn-outline:hover { background: var(--bg-card); transform: translateY(-2px); }
+
+    /* Scroll Reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 0 1.5rem;
+    }
+    .navbar.scrolled {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    [data-theme="light"] .navbar.scrolled { background: rgba(248, 250, 252, 0.85); }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg-card); }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .theme-toggle:hover { transform: scale(1.1); }
+    .hamburger {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: rgba(2, 6, 23, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    [data-theme="light"] .mobile-menu { background: rgba(248,250,252,0.95); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--bg-card); color: var(--accent-green); }
+    .mobile-menu .btn { margin-top: 0.5rem; justify-content: center; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-actions .btn { display: none; }
+    }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + 4rem);
+      padding-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 2rem;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+    .page-hero p { color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto; }
+
+    /* ── Filter Tags ── */
+    .articles-section { position: relative; z-index: 1; padding-bottom: 6rem; }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.625rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    .filter-tag {
+      padding: 0.45rem 1.1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border-glass);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      user-select: none;
+    }
+    .filter-tag:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .filter-tag.active {
+      background: var(--gradient-btn);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(6,214,160,0.3);
+    }
+
+    /* ── Article Grid ── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    @media (max-width: 900px) { .articles-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px) { .articles-grid { grid-template-columns: 1fr; } }
+
+    /* Article Card */
+    article.article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 1.125rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-glass);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: var(--transition);
+    }
+    article.article-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.15); }
+    [data-theme="light"] article.article-card:hover { box-shadow: 0 20px 50px rgba(0,0,0,0.15); }
+    article.article-card[data-hidden="true"] { display: none; }
+
+    .card-top { display: flex; align-items: center; justify-content: space-between; }
+    .category-badge {
+      padding: 0.3rem 0.875rem;
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .cat-sleep-apnea { background: rgba(6,214,160,0.15); color: #06d6a0; border: 1px solid rgba(6,214,160,0.25); }
+    .cat-cpap { background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.25); }
+    .cat-snoring { background: rgba(139,92,246,0.15); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.25); }
+    .cat-insomnia { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+    .cat-hygiene { background: rgba(236,72,153,0.15); color: #ec4899; border: 1px solid rgba(236,72,153,0.25); }
+
+    .read-time {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .article-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .article-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text);
+      margin: 0;
+    }
+    .article-excerpt {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tag-chip {
+      padding: 0.2rem 0.65rem;
+      border-radius: 0.375rem;
+      font-size: 0.73rem;
+      font-weight: 600;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text-muted);
+    }
+
+    .card-footer { margin-top: auto; }
+    .read-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-green);
+      text-decoration: none;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+    }
+    .read-more-btn:hover { gap: 0.7rem; color: var(--accent-blue); }
+    .read-more-btn span { transition: transform 0.2s; }
+    .read-more-btn:hover span { transform: translateX(4px); }
+
+    /* No results */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+      display: none;
+    }
+    .no-results.visible { display: block; }
+    .no-results-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      margin-top: 4rem;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(6,214,160,0.1), rgba(59,130,246,0.1), rgba(139,92,246,0.1));
+      border: 1px solid rgba(6,214,160,0.2);
+    }
+    .cta-banner h2 { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .cta-banner p { color: var(--text-muted); margin-bottom: 1.75rem; }
+    .cta-banner-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(2, 6, 23, 0.8);
+      border-top: 1px solid var(--border-glass);
+      backdrop-filter: blur(20px);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    [data-theme="light"] footer { background: rgba(248,250,252,0.8); }
+    footer p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.5rem; }
+    footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent-green); }
+
+    /* ── WhatsApp ── */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      z-index: 999;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: var(--transition);
+      animation: waFloat 3s ease-in-out infinite;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
+    @keyframes waFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .whatsapp-btn svg { width: 28px; height: 28px; fill: #fff; }
+  </style>
+</head>
+<body>
+  <!-- Background Orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="SleepApneaBD Home">SleepApneaBD</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="articles.html" class="active" aria-current="page">Articles</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌙</button>
+        <a href="sleep-apnea-assessment.html" class="btn btn-primary">Take Sleep Test</a>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="articles.html">Articles</a>
+    <a href="contact.html">Contact</a>
+    <a href="sleep-apnea-assessment.html" class="btn btn-primary">Take Sleep Test</a>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <div class="page-hero-badge">📚 Knowledge Base</div>
+        <h1 id="page-title">
+          <span class="gradient-text">Articles</span> &amp; Resources
+        </h1>
+        <p>Evidence-based articles on sleep apnea, CPAP therapy, snoring, insomnia, and healthy sleep habits — in Bengali and English.</p>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section" aria-labelledby="articles-heading">
+      <div class="container">
+        <h2 id="articles-heading" class="sr-only">All Articles</h2>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar" role="group" aria-label="Filter articles by category">
+          <button class="filter-tag active" data-filter="all">All</button>
+          <button class="filter-tag" data-filter="sleep-apnea">Sleep Apnea</button>
+          <button class="filter-tag" data-filter="cpap">CPAP Therapy</button>
+          <button class="filter-tag" data-filter="snoring">Snoring</button>
+          <button class="filter-tag" data-filter="insomnia">Insomnia</button>
+          <button class="filter-tag" data-filter="hygiene">Sleep Hygiene</button>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="articles-grid" id="articlesGrid" role="feed" aria-label="Articles list">
+
+          <!-- Article 1: Sleep Apnea -->
+          <article class="article-card reveal" data-category="sleep-apnea" aria-label="Article: What is Sleep Apnea? Complete Guide">
+            <div class="card-top">
+              <span class="category-badge cat-sleep-apnea">Sleep Apnea</span>
+              <span class="read-time" aria-label="Read time: 8 minutes">⏱ 8 min</span>
+            </div>
+            <div class="article-icon" aria-hidden="true">😴</div>
+            <h3 class="article-title">স্লিপ অ্যাপনিয়া কী? সম্পূর্ণ গাইড</h3>
+            <p class="article-excerpt">
+              Sleep apnea basics — understand the three types (obstructive, central, and complex), common symptoms like loud snoring and daytime fatigue, and how a sleep study leads to accurate diagnosis and treatment.
+            </p>
+            <div class="article-tags" aria-label="Tags">
+              <span class="tag-chip">Sleep Apnea</span>
+              <span class="tag-chip">Diagnosis</span>
+            </div>
+            <div class="card-footer">
+              <a href="contact.html" class="read-more-btn" aria-label="Read full article: What is Sleep Apnea?">
+                Read More <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 2: CPAP -->
+          <article class="article-card reveal" data-category="cpap" aria-label="Article: CPAP Therapy How to Get Started">
+            <div class="card-top">
+              <span class="category-badge cat-cpap">CPAP Therapy</span>
+              <span class="read-time" aria-label="Read time: 10 minutes">⏱ 10 min</span>
+            </div>
+            <div class="article-icon" aria-hidden="true">🫁</div>
+            <h3 class="article-title">CPAP থেরাপি: কীভাবে শুরু করবেন</h3>
+            <p class="article-excerpt">
+              A complete guide to CPAP machines, mask types (full face, nasal, nasal pillow), pressure settings, humidification, and practical tips for adjusting comfortably to nightly CPAP therapy.
+            </p>
+            <div class="article-tags" aria-label="Tags">
+              <span class="tag-chip">CPAP Therapy</span>
+              <span class="tag-chip">Treatment</span>
+            </div>
+            <div class="card-footer">
+              <a href="contact.html" class="read-more-btn" aria-label="Read full article: CPAP Therapy">
+                Read More <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 3: Snoring -->
+          <article class="article-card reveal" data-category="snoring" aria-label="Article: Causes and Remedies for Snoring">
+            <div class="card-top">
+              <span class="category-badge cat-snoring">Snoring</span>
+              <span class="read-time" aria-label="Read time: 6 minutes">⏱ 6 min</span>
+            </div>
+            <div class="article-icon" aria-hidden="true">💤</div>
+            <h3 class="article-title">নাক ডাকার কারণ ও প্রতিকার</h3>
+            <p class="article-excerpt">
+              Why people snore, when snoring signals a dangerous underlying condition, and what treatment options are available — from lifestyle changes and positional therapy to surgical interventions.
+            </p>
+            <div class="article-tags" aria-label="Tags">
+              <span class="tag-chip">Snoring</span>
+              <span class="tag-chip">Treatment</span>
+            </div>
+            <div class="card-footer">
+              <a href="contact.html" class="read-more-btn" aria-label="Read full article: Causes and Remedies for Snoring">
+                Read More <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 4: Insomnia -->
+          <article class="article-card reveal" data-category="insomnia" aria-label="Article: Insomnia Causes and Solutions">
+            <div class="card-top">
+              <span class="category-badge cat-insomnia">Insomnia</span>
+              <span class="read-time" aria-label="Read time: 7 minutes">⏱ 7 min</span>
+            </div>
+            <div class="article-icon" aria-hidden="true">🌙</div>
+            <h3 class="article-title">ইনসমনিয়া বা অনিদ্রা: কারণ ও সমাধান</h3>
+            <p class="article-excerpt">
+              Understanding insomnia — its causes (stress, anxiety, poor sleep habits), evidence-based treatments including Cognitive Behavioral Therapy for Insomnia (CBT-I), and when to seek professional help.
+            </p>
+            <div class="article-tags" aria-label="Tags">
+              <span class="tag-chip">Insomnia</span>
+              <span class="tag-chip">Sleep Hygiene</span>
+            </div>
+            <div class="card-footer">
+              <a href="contact.html" class="read-more-btn" aria-label="Read full article: Insomnia Causes and Solutions">
+                Read More <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 5: Sleep Hygiene -->
+          <article class="article-card reveal" data-category="hygiene" aria-label="Article: 10 Habits for Better Sleep">
+            <div class="card-top">
+              <span class="category-badge cat-hygiene">Sleep Hygiene</span>
+              <span class="read-time" aria-label="Read time: 5 minutes">⏱ 5 min</span>
+            </div>
+            <div class="article-icon" aria-hidden="true">🌟</div>
+            <h3 class="article-title">ভালো ঘুমের ১০টি অভ্যাস</h3>
+            <p class="article-excerpt">
+              Ten evidence-based sleep hygiene practices: consistent sleep schedules, bedroom temperature, blue light reduction, caffeine timing, relaxation techniques, and more to improve your quality of sleep.
+            </p>
+            <div class="article-tags" aria-label="Tags">
+              <span class="tag-chip">Sleep Hygiene</span>
+              <span class="tag-chip">Tips</span>
+            </div>
+            <div class="card-footer">
+              <a href="contact.html" class="read-more-btn" aria-label="Read full article: 10 Habits for Better Sleep">
+                Read More <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 6: When to see a doctor -->
+          <article class="article-card reveal" data-category="sleep-apnea" aria-label="Article: When to See a Doctor?">
+            <div class="card-top">
+              <span class="category-badge cat-sleep-apnea">Sleep Apnea</span>
+              <span class="read-time" aria-label="Read time: 4 minutes">⏱ 4 min</span>
+            </div>
+            <div class="article-icon" aria-hidden="true">🏥</div>
+            <h3 class="article-title">কখন ডাক্তার দেখাবেন?</h3>
+            <p class="article-excerpt">
+              Warning signs that indicate you should seek professional medical help for sleep issues — from witnessed breathing pauses and severe morning headaches to high blood pressure linked to poor sleep.
+            </p>
+            <div class="article-tags" aria-label="Tags">
+              <span class="tag-chip">Sleep Apnea</span>
+              <span class="tag-chip">Diagnosis</span>
+            </div>
+            <div class="card-footer">
+              <a href="contact.html" class="read-more-btn" aria-label="Read full article: When to See a Doctor?">
+                Read More <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- No results placeholder -->
+          <div class="no-results" id="noResults" role="status" aria-live="polite">
+            <div class="no-results-icon" aria-hidden="true">🔍</div>
+            <p>No articles found in this category.</p>
+          </div>
+
+        </div><!-- end articles-grid -->
+
+        <!-- CTA Banner -->
+        <div class="glass-card cta-banner reveal" aria-label="Call to action">
+          <h2>Ready to Get Tested?</h2>
+          <p>Take our 2-minute STOP-BANG assessment or book a consultation with our sleep specialists today.</p>
+          <div class="cta-banner-actions">
+            <a href="sleep-apnea-assessment.html" class="btn btn-primary" aria-label="Take the sleep apnea risk assessment">Take Free Sleep Test</a>
+            <a href="contact.html" class="btn btn-outline" aria-label="Book an appointment at our clinic">Book Appointment</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>© 2025 SleepApneaBD — Sleep Apnea &amp; Breathing Clinic, DSRC Dhaka</p>
+    <p>
+      <a href="index.html">Home</a> |
+      <a href="articles.html">Articles</a> |
+      <a href="sleep-apnea-assessment.html">Sleep Test</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/8801XXXXXXXXX" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <style>
+    /* Screen-reader only utility */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+
+  <script>
+    // Theme toggle
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
+
+    // Navbar scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.textContent = isOpen ? '✕' : '☰';
+    });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Category filter
+    const filterTags = document.querySelectorAll('.filter-tag');
+    const articleCards = document.querySelectorAll('.article-card');
+    const noResults = document.getElementById('noResults');
+
+    filterTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const filter = tag.dataset.filter;
+
+        // Update active tag
+        filterTags.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-pressed', 'false');
+        });
+        tag.classList.add('active');
+        tag.setAttribute('aria-pressed', 'true');
+
+        let visibleCount = 0;
+        articleCards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.setAttribute('data-hidden', match ? 'false' : 'true');
+          if (match) visibleCount++;
+        });
+
+        noResults.classList.toggle('visible', visibleCount === 0);
+      });
+    });
+  </script>
+</body>
+</html>

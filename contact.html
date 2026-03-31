@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Sleep Apnea & Breathing Clinic Dhaka</title>
+  <meta name="description" content="Contact the Sleep Apnea & Breathing Clinic in Dhaka. Book an appointment for sleep study, CPAP setup, or snoring treatment." />
+  <meta name="keywords" content="sleep clinic Dhaka contact, book sleep apnea appointment, DSRC Dhaka, sleep specialist Bangladesh" />
+  <meta property="og:title" content="Contact Us | Sleep Apnea & Breathing Clinic Dhaka" />
+  <meta property="og:description" content="Contact the Sleep Apnea & Breathing Clinic in Dhaka. Book an appointment for sleep study, CPAP setup, or snoring treatment." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --bg: #020617;
+      --bg-secondary: #0f172a;
+      --bg-card: rgba(255,255,255,0.05);
+      --border-glass: rgba(255,255,255,0.1);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-green: #06d6a0;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --gradient: linear-gradient(135deg, #06d6a0, #3b82f6, #8b5cf6);
+      --gradient-btn: linear-gradient(135deg, #06d6a0 0%, #3b82f6 100%);
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.4);
+      --nav-height: 72px;
+      --transition: all 0.3s ease;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-secondary: #e2e8f0;
+      --bg-card: rgba(255,255,255,0.8);
+      --border-glass: rgba(0,0,0,0.1);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Background Orbs */
+    .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; animation: floatOrb 20s ease-in-out infinite; }
+    [data-theme="light"] .orb { opacity: 0.10; }
+    .orb-1 { width: 600px; height: 600px; background: #06d6a0; top: -200px; left: -200px; animation-delay: 0s; }
+    .orb-2 { width: 500px; height: 500px; background: #3b82f6; top: 30%; right: -150px; animation-delay: -7s; }
+    .orb-3 { width: 400px; height: 400px; background: #8b5cf6; bottom: -100px; left: 30%; animation-delay: -14s; }
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -60px) scale(1.1); }
+      66% { transform: translate(-30px, 40px) scale(0.9); }
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 1rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-glass);
+      transition: var(--transition);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--gradient-btn); color: #fff; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6,214,160,0.4); }
+    .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-glass); backdrop-filter: blur(10px); }
+    .btn-outline:hover { background: var(--bg-card); transform: translateY(-2px); }
+
+    /* Scroll Reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 0 1.5rem;
+    }
+    .navbar.scrolled {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    [data-theme="light"] .navbar.scrolled { background: rgba(248, 250, 252, 0.85); }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg-card); }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .theme-toggle:hover { transform: scale(1.1); }
+    .hamburger {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: rgba(2, 6, 23, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    [data-theme="light"] .mobile-menu { background: rgba(248,250,252,0.95); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--bg-card); color: var(--accent-green); }
+    .mobile-menu .btn { margin-top: 0.5rem; justify-content: center; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-actions .btn { display: none; }
+    }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + 4rem);
+      padding-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 2rem;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-purple);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+    .page-hero p { color: var(--text-muted); font-size: 1.05rem; max-width: 580px; margin: 0 auto; }
+
+    /* ── Contact Section ── */
+    .contact-section { position: relative; z-index: 1; padding-bottom: 6rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* ── Form Card ── */
+    .form-card { padding: 2.5rem; }
+    .form-card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .form-card-subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+      letter-spacing: 0.02em;
+    }
+    .form-group label .required { color: #ef4444; margin-left: 2px; }
+
+    .form-control {
+      width: 100%;
+      padding: 0.825rem 1.1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 0.625rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    [data-theme="light"] .form-control { background: rgba(255,255,255,0.9); }
+    .form-control::placeholder { color: var(--text-muted); }
+    .form-control:focus {
+      border-color: var(--accent-green);
+      background: rgba(6,214,160,0.05);
+      box-shadow: 0 0 0 3px rgba(6,214,160,0.1);
+    }
+    .form-control:invalid:not(:placeholder-shown) {
+      border-color: #ef4444;
+    }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    select.form-control {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.875rem center;
+      background-size: 18px;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    select.form-control option { background: #0f172a; color: var(--text); }
+    [data-theme="light"] select.form-control option { background: #fff; color: #0f172a; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .btn-submit-form {
+      width: 100%;
+      justify-content: center;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Success Message */
+    .success-msg {
+      display: none;
+      padding: 1.5rem;
+      border-radius: 0.875rem;
+      background: rgba(6,214,160,0.1);
+      border: 1px solid rgba(6,214,160,0.3);
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .success-msg.show { display: block; }
+    .success-msg .success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .success-msg h3 { font-size: 1.1rem; font-weight: 700; color: var(--accent-green); margin-bottom: 0.5rem; }
+    .success-msg p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* ── Info Card ── */
+    .info-card { padding: 2.5rem; }
+    .info-card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .info-card-subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .info-item:last-child { border-bottom: none; }
+    .info-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      width: 36px;
+      height: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .info-content .info-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.2rem;
+    }
+    .info-content .info-value {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .info-content a {
+      color: var(--accent-green);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .info-content a:hover { opacity: 0.8; }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.2rem 1rem;
+      font-size: 0.9rem;
+    }
+    .hours-grid .day { color: var(--text-muted); }
+    .hours-grid .time { color: var(--text); font-weight: 500; }
+    .hours-grid .closed { color: #ef4444; }
+
+    /* ── Map Section ── */
+    .map-section { margin-top: 2rem; position: relative; z-index: 1; padding-bottom: 6rem; }
+    .map-card { overflow: hidden; padding: 0; }
+    .map-card-header {
+      padding: 1.5rem 1.75rem;
+      border-bottom: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .map-card-header h2 { font-size: 1.1rem; font-weight: 700; }
+    .map-card-header span { color: var(--text-muted); font-size: 0.88rem; }
+    .map-wrapper { position: relative; }
+    .map-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 420px;
+      border: 0;
+      filter: grayscale(20%) contrast(1.05);
+      transition: filter 0.3s;
+    }
+    [data-theme="light"] .map-wrapper iframe { filter: none; }
+    .map-wrapper:hover iframe { filter: none; }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(2, 6, 23, 0.8);
+      border-top: 1px solid var(--border-glass);
+      backdrop-filter: blur(20px);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    [data-theme="light"] footer { background: rgba(248,250,252,0.8); }
+    footer p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.5rem; }
+    footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent-green); }
+
+    /* ── WhatsApp ── */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      z-index: 999;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: var(--transition);
+      animation: waFloat 3s ease-in-out infinite;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
+    @keyframes waFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .whatsapp-btn svg { width: 28px; height: 28px; fill: #fff; }
+
+    @media (max-width: 600px) {
+      .form-card { padding: 1.5rem; }
+      .info-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="SleepApneaBD Home">SleepApneaBD</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌙</button>
+        <a href="sleep-apnea-assessment.html" class="btn btn-primary">Take Sleep Test</a>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="articles.html">Articles</a>
+    <a href="contact.html">Contact</a>
+    <a href="sleep-apnea-assessment.html" class="btn btn-primary">Take Sleep Test</a>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <div class="page-hero-badge">📍 Get In Touch</div>
+        <h1 id="page-title">
+          <span class="gradient-text">Contact</span> Us
+        </h1>
+        <p>Book an appointment for a sleep study, CPAP setup, or consultation with our sleep specialists in Dhaka.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Contact Information and Form</h2>
+        <div class="contact-grid">
+
+          <!-- Contact Form -->
+          <div class="glass-card form-card reveal">
+            <h2 class="form-card-title">Book an Appointment</h2>
+            <p class="form-card-subtitle">Fill in your details and we'll get back to you within 24 hours.</p>
+
+            <form id="contactForm" novalidate aria-label="Contact and appointment booking form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fullName">Full Name <span class="required" aria-hidden="true">*</span></label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    class="form-control"
+                    placeholder="Your full name"
+                    autocomplete="name"
+                    required
+                    aria-required="true"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number <span class="required" aria-hidden="true">*</span></label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    class="form-control"
+                    placeholder="+880 1X-XXXX-XXXX"
+                    autocomplete="tel"
+                    required
+                    aria-required="true"
+                    aria-describedby="phone-hint"
+                  />
+                  <span id="phone-hint" style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;display:block;">Include country code, e.g. +880</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="your@email.com"
+                  autocomplete="email"
+                  aria-describedby="email-hint"
+                />
+                <span id="email-hint" style="font-size:0.78rem;color:var(--text-muted);margin-top:0.25rem;display:block;">Optional — for appointment confirmation</span>
+              </div>
+
+              <div class="form-group">
+                <label for="concern">Concern / Message <span class="required" aria-hidden="true">*</span></label>
+                <textarea
+                  id="concern"
+                  name="concern"
+                  class="form-control"
+                  placeholder="Please describe your symptoms or concern (e.g. loud snoring, daytime sleepiness, breathing pauses during sleep)..."
+                  required
+                  aria-required="true"
+                  rows="5"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="appointmentTime">Preferred Appointment Time</label>
+                <select
+                  id="appointmentTime"
+                  name="appointmentTime"
+                  class="form-control"
+                  aria-label="Select preferred appointment time"
+                >
+                  <option value="" disabled selected>Select a time preference</option>
+                  <option value="morning">Morning (9:00 AM – 12:00 PM)</option>
+                  <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
+                  <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit-form" aria-label="Send message and book appointment">
+                📩 Send Message &amp; Book Appointment
+              </button>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-msg" id="successMsg" role="alert" aria-live="assertive">
+              <div class="success-icon" aria-hidden="true">✅</div>
+              <h3>আপনার বার্তা পাঠানো হয়েছে!</h3>
+              <p>We'll contact you shortly to confirm your appointment. Thank you for reaching out to SleepApneaBD.</p>
+            </div>
+          </div>
+
+          <!-- Clinic Info -->
+          <div class="glass-card info-card reveal" style="transition-delay: 0.15s;">
+            <h2 class="info-card-title">Clinic Information</h2>
+            <p class="info-card-subtitle">Visit us or get in touch through your preferred channel.</p>
+
+            <ul class="info-list" aria-label="Clinic contact details">
+              <li class="info-item">
+                <div class="info-icon" aria-hidden="true">📍</div>
+                <div class="info-content">
+                  <div class="info-label">Address</div>
+                  <div class="info-value">DSRC Dhaka, House 35, Road 7<br>Dhanmondi, Dhaka 1205, Bangladesh</div>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon" aria-hidden="true">📞</div>
+                <div class="info-content">
+                  <div class="info-label">Phone</div>
+                  <div class="info-value">
+                    <a href="tel:+880-2-XXXXXXXX" aria-label="Call our clinic phone number">+880-2-XXXXXXXX</a>
+                  </div>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon" aria-hidden="true">📱</div>
+                <div class="info-content">
+                  <div class="info-label">WhatsApp</div>
+                  <div class="info-value">
+                    <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Message us on WhatsApp">+880-1XXXXXXXXX</a>
+                  </div>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon" aria-hidden="true">📧</div>
+                <div class="info-content">
+                  <div class="info-label">Email</div>
+                  <div class="info-value">
+                    <a href="mailto:info@sleepapneabd.com" aria-label="Send us an email">info@sleepapneabd.com</a>
+                  </div>
+                </div>
+              </li>
+              <li class="info-item">
+                <div class="info-icon" aria-hidden="true">⏰</div>
+                <div class="info-content">
+                  <div class="info-label">Clinic Hours</div>
+                  <div class="info-value">
+                    <div class="hours-grid">
+                      <span class="day">Sat – Thu</span>
+                      <span class="time">9:00 AM – 8:00 PM</span>
+                      <span class="day">Friday</span>
+                      <span class="time closed">Closed</span>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Quick Actions -->
+            <div style="display:flex;gap:0.75rem;margin-top:1.75rem;flex-wrap:wrap;">
+              <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex:1;justify-content:center;font-size:0.88rem;padding:0.7rem 1rem;" aria-label="Chat on WhatsApp">
+                💬 WhatsApp
+              </a>
+              <a href="tel:+880-2-XXXXXXXX" class="btn btn-outline" style="flex:1;justify-content:center;font-size:0.88rem;padding:0.7rem 1rem;" aria-label="Call us directly">
+                📞 Call Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="glass-card map-card reveal" style="margin-top:2rem;" aria-label="Clinic location map">
+          <div class="map-card-header">
+            <span aria-hidden="true">🗺️</span>
+            <div>
+              <h2>Find Us</h2>
+              <span>DSRC Dhaka — Dhanmondi, Dhaka 1205</span>
+            </div>
+          </div>
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.0!2d90.3742!3d23.7465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ0JzQ3LjQiTiA5MMKwMjInMjYuNyJF!5e0!3m2!1sen!2sbd!4v1234567890"
+              width="100%"
+              height="420"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="DSRC Dhaka Location — Sleep Apnea & Breathing Clinic"
+              aria-label="Google Maps showing clinic location in Dhanmondi, Dhaka"
+            ></iframe>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>© 2025 SleepApneaBD — Sleep Apnea &amp; Breathing Clinic, DSRC Dhaka</p>
+    <p>
+      <a href="index.html">Home</a> |
+      <a href="articles.html">Articles</a> |
+      <a href="sleep-apnea-assessment.html">Sleep Test</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/8801XXXXXXXXX" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Theme toggle
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
+
+    // Navbar scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.textContent = isOpen ? '✕' : '☰';
+    });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = document.getElementById('fullName').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const concern = document.getElementById('concern').value.trim();
+
+      if (!name || !phone || !concern) {
+        // Focus first invalid field
+        if (!name) { document.getElementById('fullName').focus(); return; }
+        if (!phone) { document.getElementById('phone').focus(); return; }
+        if (!concern) { document.getElementById('concern').focus(); return; }
+        return;
+      }
+
+      // Simulate submission — hide form, show success
+      contactForm.style.display = 'none';
+      successMsg.classList.add('show');
+      successMsg.focus();
+    });
+  </script>
+</body>
+</html>

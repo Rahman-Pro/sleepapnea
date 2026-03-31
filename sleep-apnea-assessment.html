@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Apnea Risk Assessment | SleepApneaBD</title>
+  <meta name="description" content="Take the STOP-BANG sleep apnea risk assessment. Find out your risk level and book a consultation at our clinic in Dhaka." />
+  <meta name="keywords" content="sleep apnea test, STOP-BANG questionnaire, sleep apnea risk, sleep clinic Dhaka" />
+  <meta property="og:title" content="Sleep Apnea Risk Assessment | SleepApneaBD" />
+  <meta property="og:description" content="Take the STOP-BANG sleep apnea risk assessment. Find out your risk level and book a consultation at our clinic in Dhaka." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --bg: #020617;
+      --bg-secondary: #0f172a;
+      --bg-card: rgba(255,255,255,0.05);
+      --border-glass: rgba(255,255,255,0.1);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-green: #06d6a0;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --gradient: linear-gradient(135deg, #06d6a0, #3b82f6, #8b5cf6);
+      --gradient-btn: linear-gradient(135deg, #06d6a0 0%, #3b82f6 100%);
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.4);
+      --nav-height: 72px;
+      --transition: all 0.3s ease;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-secondary: #e2e8f0;
+      --bg-card: rgba(255,255,255,0.8);
+      --border-glass: rgba(0,0,0,0.1);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Background Orbs */
+    .bg-orbs { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.18; animation: floatOrb 20s ease-in-out infinite; }
+    [data-theme="light"] .orb { opacity: 0.10; }
+    .orb-1 { width: 600px; height: 600px; background: #06d6a0; top: -200px; left: -200px; animation-delay: 0s; }
+    .orb-2 { width: 500px; height: 500px; background: #3b82f6; top: 30%; right: -150px; animation-delay: -7s; }
+    .orb-3 { width: 400px; height: 400px; background: #8b5cf6; bottom: -100px; left: 30%; animation-delay: -14s; }
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -60px) scale(1.1); }
+      66% { transform: translate(-30px, 40px) scale(0.9); }
+    }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 1rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-glass);
+      transition: var(--transition);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary {
+      background: var(--gradient-btn);
+      color: #fff;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6,214,160,0.4); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(10px);
+    }
+    .btn-outline:hover { background: var(--bg-card); transform: translateY(-2px); }
+
+    /* Scroll Reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 0 1.5rem;
+    }
+    .navbar.scrolled {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    [data-theme="light"] .navbar.scrolled { background: rgba(248, 250, 252, 0.85); }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: var(--transition);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--bg-card); }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .theme-toggle:hover { transform: scale(1.1); }
+    .hamburger {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: rgba(2, 6, 23, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    [data-theme="light"] .mobile-menu { background: rgba(248,250,252,0.95); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--bg-card); color: var(--accent-green); }
+    .mobile-menu .btn { margin-top: 0.5rem; justify-content: center; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-actions .btn { display: none; }
+    }
+
+    /* ── Hero ── */
+    .page-hero {
+      padding-top: calc(var(--nav-height) + 4rem);
+      padding-bottom: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 2rem;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-green);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(10px);
+    }
+    .page-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* ── Assessment Section ── */
+    .assessment-section {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 6rem;
+    }
+
+    .info-card {
+      padding: 2rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 640px) { .info-card { grid-template-columns: 1fr; } }
+
+    .info-block h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .info-block p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+    /* ── Form Card ── */
+    .form-card { padding: 2.5rem; }
+    .form-card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .form-card > p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .question-list { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+    .question-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 0.875rem;
+      padding: 1.25rem 1.5rem;
+      transition: var(--transition);
+    }
+    .question-item:hover { border-color: rgba(6,214,160,0.3); }
+    .question-item.answered { border-color: rgba(6,214,160,0.4); background: rgba(6,214,160,0.05); }
+
+    .question-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    .question-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--gradient-btn);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .question-text { flex: 1; }
+    .question-text .en { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 0.25rem; }
+    .question-text .bn { font-size: 0.88rem; color: var(--text-muted); }
+
+    .radio-group {
+      display: flex;
+      gap: 0.75rem;
+      padding-left: 2.75rem;
+    }
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      border: 1px solid var(--border-glass);
+      background: transparent;
+      color: var(--text-muted);
+      transition: var(--transition);
+      user-select: none;
+    }
+    .radio-label:has(input:checked) {
+      border-color: var(--accent-green);
+      background: rgba(6,214,160,0.15);
+      color: var(--accent-green);
+    }
+    .radio-label input { position: absolute; opacity: 0; width: 0; height: 0; }
+
+    .form-progress {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .progress-bar-wrap {
+      flex: 1;
+      height: 6px;
+      background: var(--border-glass);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--gradient-btn);
+      border-radius: 3px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    .progress-label { font-size: 0.82rem; color: var(--text-muted); white-space: nowrap; }
+
+    .form-actions { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-submit {
+      background: var(--gradient-btn);
+      color: #fff;
+      padding: 0.875rem 2.5rem;
+      font-size: 1rem;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6,214,160,0.4); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+    .btn-reset { padding: 0.875rem 1.75rem; }
+
+    /* ── Result Card ── */
+    #result-section { display: none; margin-top: 2rem; }
+    .result-card { padding: 2.5rem; text-align: center; }
+
+    .result-score-ring {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      border: 4px solid;
+    }
+    .result-score-ring .score-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .result-score-ring .score-of {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .risk-low .result-score-ring { border-color: #06d6a0; color: #06d6a0; }
+    .risk-moderate .result-score-ring { border-color: #f59e0b; color: #f59e0b; }
+    .risk-high .result-score-ring { border-color: #ef4444; color: #ef4444; }
+
+    .result-badge {
+      display: inline-block;
+      padding: 0.4rem 1.25rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .risk-low .result-badge { background: rgba(6,214,160,0.15); color: #06d6a0; border: 1px solid rgba(6,214,160,0.3); }
+    .risk-moderate .result-badge { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.3); }
+    .risk-high .result-badge { background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+
+    .result-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .result-desc { color: var(--text-muted); font-size: 0.95rem; max-width: 480px; margin: 0 auto 2rem; }
+
+    .result-answers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .answer-dot {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .answer-yes { background: rgba(239,68,68,0.2); color: #ef4444; border: 1px solid rgba(239,68,68,0.3); }
+    .answer-no { background: rgba(6,214,160,0.15); color: #06d6a0; border: 1px solid rgba(6,214,160,0.2); }
+
+    .result-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      background: rgba(2, 6, 23, 0.8);
+      border-top: 1px solid var(--border-glass);
+      backdrop-filter: blur(20px);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    [data-theme="light"] footer { background: rgba(248,250,252,0.8); }
+    footer p { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.5rem; }
+    footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent-green); }
+
+    /* ── WhatsApp Button ── */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      z-index: 999;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      transition: var(--transition);
+      animation: waFloat 3s ease-in-out infinite;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.6); }
+    @keyframes waFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .whatsapp-btn svg { width: 28px; height: 28px; fill: #fff; }
+
+    @media (max-width: 600px) {
+      .form-card { padding: 1.5rem; }
+      .radio-group { padding-left: 0; flex-wrap: wrap; }
+      .result-cta .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="SleepApneaBD Home">SleepApneaBD</a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle theme" id="themeToggle">🌙</button>
+        <a href="sleep-apnea-assessment.html" class="btn btn-primary" aria-current="page">Take Sleep Test</a>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false" id="hamburger">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="articles.html">Articles</a>
+    <a href="contact.html">Contact</a>
+    <a href="sleep-apnea-assessment.html" class="btn btn-primary">Take Sleep Test</a>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <div class="page-hero-badge" aria-label="Clinical assessment tool">⚕️ Clinical Assessment</div>
+        <h1 id="page-title">
+          <span class="gradient-text">Sleep Apnea</span><br>Risk Assessment
+        </h1>
+        <p>Answer 8 simple questions to determine your sleep apnea risk level using the internationally validated STOP-BANG questionnaire — used by clinicians worldwide.</p>
+      </div>
+    </section>
+
+    <section class="assessment-section" aria-label="Assessment form">
+      <div class="container">
+
+        <!-- Info Card -->
+        <div class="glass-card info-card reveal" aria-label="About the STOP-BANG questionnaire">
+          <div class="info-block">
+            <h3>🔬 What is STOP-BANG?</h3>
+            <p>The STOP-BANG questionnaire is a validated screening tool for obstructive sleep apnea (OSA). Each letter stands for a key risk factor: Snoring, Tiredness, Observed apnea, blood Pressure, BMI, Age, Neck circumference, and Gender.</p>
+          </div>
+          <div class="info-block">
+            <h3>🇧🇩 STOP-BANG কী?</h3>
+            <p>STOP-BANG একটি আন্তর্জাতিকভাবে স্বীকৃত স্ক্রিনিং টুল যা অবস্ট্রাক্টিভ স্লিপ অ্যাপনিয়ার ঝুঁকি নির্ণয় করে। মাত্র ৮টি প্রশ্নের উত্তর দিয়ে আপনি আপনার ঝুঁকির মাত্রা জানতে পারবেন।</p>
+          </div>
+        </div>
+
+        <!-- Assessment Form -->
+        <div class="glass-card form-card reveal" id="assessmentCard">
+          <h2>Complete the Questionnaire</h2>
+          <p>Please answer all 8 questions honestly for the most accurate result.</p>
+
+          <!-- Progress Bar -->
+          <div class="form-progress" aria-label="Assessment progress">
+            <div class="progress-bar-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" aria-label="Questions answered">
+              <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-label" id="progressLabel">0 / 8 answered</span>
+          </div>
+
+          <form id="stopbangForm" novalidate aria-label="STOP-BANG sleep apnea questionnaire">
+            <ol class="question-list" aria-label="Sleep apnea risk questions">
+
+              <!-- Q1: Snoring -->
+              <li class="question-item" id="q-item-1">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">S</div>
+                  <div class="question-text">
+                    <div class="en">Do you snore loudly (louder than talking or audible through closed doors)?</div>
+                    <div class="bn">আপনি কি জোরে নাক ডাকেন?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="Snoring question">
+                  <label class="radio-label">
+                    <input type="radio" name="q1" value="yes" required aria-label="Yes, I snore loudly" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q1" value="no" aria-label="No, I do not snore loudly" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+
+              <!-- Q2: Tired -->
+              <li class="question-item" id="q-item-2">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">T</div>
+                  <div class="question-text">
+                    <div class="en">Do you often feel tired, fatigued, or sleepy during the daytime?</div>
+                    <div class="bn">আপনি কি প্রায়ই দিনে ক্লান্ত বা ঘুম ঘুম অনুভব করেন?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="Tiredness question">
+                  <label class="radio-label">
+                    <input type="radio" name="q2" value="yes" aria-label="Yes, I often feel tired during the day" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q2" value="no" aria-label="No, I do not often feel tired during the day" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+
+              <!-- Q3: Observed -->
+              <li class="question-item" id="q-item-3">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">O</div>
+                  <div class="question-text">
+                    <div class="en">Has anyone observed you stop breathing during your sleep?</div>
+                    <div class="bn">ঘুমের মধ্যে আপনার শ্বাস বন্ধ হয়ে যায় কি?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="Observed apnea question">
+                  <label class="radio-label">
+                    <input type="radio" name="q3" value="yes" aria-label="Yes, someone observed me stop breathing" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q3" value="no" aria-label="No, nobody observed me stop breathing" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+
+              <!-- Q4: Pressure -->
+              <li class="question-item" id="q-item-4">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">P</div>
+                  <div class="question-text">
+                    <div class="en">Do you have or are you being treated for high blood pressure?</div>
+                    <div class="bn">আপনার কি উচ্চ রক্তচাপ আছে বা চিকিৎসা চলছে?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="Blood pressure question">
+                  <label class="radio-label">
+                    <input type="radio" name="q4" value="yes" aria-label="Yes, I have high blood pressure" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q4" value="no" aria-label="No, I do not have high blood pressure" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+
+              <!-- Q5: BMI -->
+              <li class="question-item" id="q-item-5">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">B</div>
+                  <div class="question-text">
+                    <div class="en">BMI &gt; 35 kg/m²? (Body Mass Index over 35)</div>
+                    <div class="bn">আপনার BMI কি ৩৫-এর বেশি?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="BMI question">
+                  <label class="radio-label">
+                    <input type="radio" name="q5" value="yes" aria-label="Yes, my BMI is over 35" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q5" value="no" aria-label="No, my BMI is 35 or below" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+
+              <!-- Q6: Age -->
+              <li class="question-item" id="q-item-6">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">A</div>
+                  <div class="question-text">
+                    <div class="en">Age &gt; 50 years?</div>
+                    <div class="bn">আপনার বয়স কি ৫০ বছরের বেশি?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="Age question">
+                  <label class="radio-label">
+                    <input type="radio" name="q6" value="yes" aria-label="Yes, I am over 50 years old" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q6" value="no" aria-label="No, I am 50 years old or younger" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+
+              <!-- Q7: Neck -->
+              <li class="question-item" id="q-item-7">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">N</div>
+                  <div class="question-text">
+                    <div class="en">Neck circumference &gt; 40 cm?</div>
+                    <div class="bn">আপনার ঘাড়ের পরিধি কি ৪০ সেমি-এর বেশি?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="Neck circumference question">
+                  <label class="radio-label">
+                    <input type="radio" name="q7" value="yes" aria-label="Yes, my neck circumference is over 40 cm" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q7" value="no" aria-label="No, my neck circumference is 40 cm or below" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+
+              <!-- Q8: Gender -->
+              <li class="question-item" id="q-item-8">
+                <div class="question-header">
+                  <div class="question-num" aria-hidden="true">G</div>
+                  <div class="question-text">
+                    <div class="en">Are you male?</div>
+                    <div class="bn">আপনি কি পুরুষ?</div>
+                  </div>
+                </div>
+                <div class="radio-group" role="radiogroup" aria-label="Gender question">
+                  <label class="radio-label">
+                    <input type="radio" name="q8" value="yes" aria-label="Yes, I am male" />
+                    ✓ Yes / হ্যাঁ
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="q8" value="no" aria-label="No, I am not male" />
+                    ✕ No / না
+                  </label>
+                </div>
+              </li>
+            </ol>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-submit" id="submitBtn" disabled aria-label="Calculate my sleep apnea risk score">
+                Calculate My Risk Score →
+              </button>
+              <button type="button" class="btn btn-outline btn-reset" id="resetBtn" aria-label="Reset the questionnaire">
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Result Section -->
+        <div id="result-section" role="region" aria-label="Assessment results" aria-live="polite">
+          <div class="glass-card result-card" id="resultCard">
+            <div class="result-score-ring" id="resultRing" aria-hidden="true">
+              <span class="score-num" id="scoreNum">0</span>
+              <span class="score-of">out of 8</span>
+            </div>
+            <div class="result-badge" id="resultBadge" role="status"></div>
+            <h2 class="result-title" id="resultTitle"></h2>
+            <p class="result-desc" id="resultDesc"></p>
+
+            <div class="result-answers" id="resultAnswers" aria-label="Your answers summary"></div>
+
+            <div class="result-cta">
+              <a href="contact.html" class="btn btn-primary" aria-label="Book an appointment at our clinic">
+                📅 Book Appointment Now
+              </a>
+              <a href="articles.html" class="btn btn-outline" aria-label="Learn more about sleep apnea">
+                আরও জানুন →
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>© 2025 SleepApneaBD — Sleep Apnea &amp; Breathing Clinic, DSRC Dhaka</p>
+    <p>
+      <a href="index.html">Home</a> |
+      <a href="articles.html">Articles</a> |
+      <a href="sleep-apnea-assessment.html">Sleep Test</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/8801XXXXXXXXX" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    // Theme toggle
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      themeToggle.textContent = next === 'dark' ? '🌙' : '☀️';
+    });
+
+    // Navbar scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.textContent = isOpen ? '✕' : '☰';
+    });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Assessment logic
+    const form = document.getElementById('stopbangForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const progressFill = document.getElementById('progressFill');
+    const progressLabel = document.getElementById('progressLabel');
+    const progressBar = document.querySelector('.progress-bar-wrap');
+
+    function countAnswered() {
+      let count = 0;
+      for (let i = 1; i <= 8; i++) {
+        const checked = form.querySelector(`input[name="q${i}"]:checked`);
+        if (checked) {
+          count++;
+          document.getElementById(`q-item-${i}`).classList.add('answered');
+        }
+      }
+      return count;
+    }
+
+    form.addEventListener('change', () => {
+      const answered = countAnswered();
+      const pct = (answered / 8) * 100;
+      progressFill.style.width = pct + '%';
+      progressLabel.textContent = `${answered} / 8 answered`;
+      progressBar.setAttribute('aria-valuenow', answered);
+      submitBtn.disabled = answered < 8;
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      let score = 0;
+      const answers = [];
+      for (let i = 1; i <= 8; i++) {
+        const val = form.querySelector(`input[name="q${i}"]:checked`)?.value;
+        answers.push(val);
+        if (val === 'yes') score++;
+      }
+
+      showResult(score, answers);
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      form.reset();
+      document.querySelectorAll('.question-item').forEach(el => el.classList.remove('answered'));
+      progressFill.style.width = '0%';
+      progressLabel.textContent = '0 / 8 answered';
+      progressBar.setAttribute('aria-valuenow', 0);
+      submitBtn.disabled = true;
+      document.getElementById('result-section').style.display = 'none';
+      document.getElementById('assessmentCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    function showResult(score, answers) {
+      const resultSection = document.getElementById('result-section');
+      const resultCard = document.getElementById('resultCard');
+      const resultRing = document.getElementById('resultRing');
+      const scoreNum = document.getElementById('scoreNum');
+      const resultBadge = document.getElementById('resultBadge');
+      const resultTitle = document.getElementById('resultTitle');
+      const resultDesc = document.getElementById('resultDesc');
+      const resultAnswers = document.getElementById('resultAnswers');
+
+      scoreNum.textContent = score;
+
+      // Clear risk classes
+      resultCard.className = 'glass-card result-card';
+
+      let riskClass, badgeText, titleText, descText;
+
+      if (score <= 2) {
+        riskClass = 'risk-low';
+        badgeText = '✅ Low Risk';
+        titleText = 'Low Sleep Apnea Risk';
+        descText = 'Your score suggests a low risk of obstructive sleep apnea. If you continue to experience sleep-related symptoms, consult a doctor. Maintaining a healthy weight and sleep schedule helps prevent OSA.';
+      } else if (score <= 4) {
+        riskClass = 'risk-moderate';
+        badgeText = '⚠️ Moderate Risk';
+        titleText = 'Moderate Sleep Apnea Risk';
+        descText = 'Your score indicates a moderate risk. We recommend scheduling a consultation with our sleep specialists. A proper sleep study can confirm whether you have OSA and determine the best treatment.';
+      } else {
+        riskClass = 'risk-high';
+        badgeText = '🚨 High Risk';
+        titleText = 'High Sleep Apnea Risk';
+        descText = 'Your score indicates a high risk of obstructive sleep apnea. Please book an appointment immediately. Untreated sleep apnea can lead to serious health complications including heart disease, stroke, and diabetes.';
+      }
+
+      resultCard.classList.add(riskClass);
+      resultBadge.textContent = badgeText;
+      resultTitle.textContent = titleText;
+      resultDesc.textContent = descText;
+
+      // Answer dots
+      const labels = ['S','T','O','P','B','A','N','G'];
+      resultAnswers.innerHTML = '';
+      answers.forEach((ans, i) => {
+        const dot = document.createElement('div');
+        dot.className = `answer-dot ${ans === 'yes' ? 'answer-yes' : 'answer-no'}`;
+        dot.textContent = labels[i];
+        dot.title = `${labels[i]}: ${ans === 'yes' ? 'Yes' : 'No'}`;
+        dot.setAttribute('aria-label', `Question ${labels[i]}: answered ${ans}`);
+        resultAnswers.appendChild(dot);
+      });
+
+      resultSection.style.display = 'block';
+      resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
