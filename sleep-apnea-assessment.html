@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Apnea Risk Assessment — SleepApneaBD</title>
+  <meta name="description" content="Take our free STOP-BANG sleep apnea risk assessment. Find out if you are at risk of obstructive sleep apnea in under 3 minutes.">
+  <meta property="og:title" content="Sleep Apnea Risk Assessment — SleepApneaBD">
+  <meta property="og:description" content="Free STOP-BANG questionnaire — discover your sleep apnea risk level in minutes.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --bg-card: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.1);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent-1: #06d6a0;
+      --accent-2: #3b82f6;
+      --nav-bg: rgba(10,14,26,0.85);
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-card: rgba(255,255,255,0.7);
+      --border: rgba(0,0,0,0.1);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --nav-bg: rgba(248,250,252,0.85);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    /* ORBS */
+    .orbs { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: floatOrb 20s ease-in-out infinite; }
+    .orb-1 { width: 600px; height: 600px; background: #06d6a0; top: -200px; left: -200px; animation-delay: 0s; }
+    .orb-2 { width: 500px; height: 500px; background: #3b82f6; bottom: -150px; right: -150px; animation-delay: -7s; }
+    .orb-3 { width: 400px; height: 400px; background: #8b5cf6; top: 50%; left: 50%; animation-name: floatOrb3; animation-delay: -14s; }
+    @keyframes floatOrb {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(30px,-30px) scale(1.05); }
+      66% { transform: translate(-20px,20px) scale(0.95); }
+    }
+    @keyframes floatOrb3 {
+      0%,100% { transform: translate(-50%,-50%) scale(1); }
+      33% { transform: translate(calc(-50% + 30px), calc(-50% - 30px)) scale(1.05); }
+      66% { transform: translate(calc(-50% - 20px), calc(-50% + 20px)) scale(0.95); }
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(20px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 68px;
+    }
+    .nav-logo { font-size: 1.4rem; font-weight: 800; text-decoration: none; color: var(--text-primary); }
+    .nav-logo span {
+      background: linear-gradient(135deg, #06d6a0, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .nav-links { list-style: none; display: flex; gap: 4px; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-secondary);
+      font-size: 0.9rem; font-weight: 500;
+      padding: 6px 12px; border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); background: var(--bg-card); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .theme-toggle {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 10px; cursor: pointer; font-size: 1rem;
+    }
+    .btn-nav-cta {
+      background: linear-gradient(135deg, #06d6a0, #3b82f6);
+      color: #fff; text-decoration: none; padding: 9px 20px; border-radius: 10px;
+      font-size: 0.9rem; font-weight: 600; transition: opacity 0.2s, transform 0.2s; white-space: nowrap;
+    }
+    .btn-nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hamburger {
+      display: none; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 10px; cursor: pointer; font-size: 1.2rem;
+      color: var(--text-primary);
+    }
+
+    /* LAYOUT */
+    main { position: relative; z-index: 1; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+
+    /* GRADIENT TEXT */
+    .gradient-text {
+      background: linear-gradient(135deg, #06d6a0, #3b82f6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* GLASS */
+    .glass {
+      background: var(--bg-card); backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 20px; padding: 32px;
+      transition: background 0.3s, border 0.3s;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #06d6a0, #3b82f6);
+      color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 12px;
+      font-size: 1rem; font-weight: 600; border: none; cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(6,214,160,0.3);
+    }
+    .btn-primary:hover { opacity: 0.92; transform: translateY(-2px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; border: 1px solid var(--border); color: var(--text-primary);
+      text-decoration: none; padding: 14px 28px; border-radius: 12px;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { background: var(--bg-card); border-color: #06d6a0; }
+
+    /* SECTION LABEL */
+    .section-label {
+      display: inline-block;
+      background: rgba(6,214,160,0.1); border: 1px solid rgba(6,214,160,0.3);
+      color: #06d6a0; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; margin-bottom: 16px;
+    }
+
+    /* FADE UP */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* HERO */
+    .page-hero { padding: 64px 0 48px; text-align: center; }
+    .page-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .page-hero p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; max-width: 560px; margin: 0 auto 32px; }
+
+    /* PROGRESS BAR */
+    .progress-wrap { margin-bottom: 32px; }
+    .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .progress-label { color: var(--text-secondary); font-size: 0.9rem; font-weight: 600; }
+    .progress-count { color: var(--accent-1); font-weight: 700; font-size: 0.9rem; }
+    .progress-bar-bg { height: 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .progress-bar-fill {
+      height: 100%; border-radius: 8px;
+      background: linear-gradient(90deg, #06d6a0, #3b82f6);
+      transition: width 0.4s ease;
+    }
+
+    /* QUESTIONNAIRE */
+    .quiz-section { padding: 0 0 80px; }
+    .question-card {
+      background: var(--bg-card); backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 32px; margin-bottom: 20px;
+      transition: border-color 0.3s, transform 0.2s;
+      cursor: default;
+    }
+    .question-card:hover { border-color: rgba(6,214,160,0.2); }
+    .question-card.answered { border-color: rgba(6,214,160,0.4); background: rgba(6,214,160,0.03); }
+    .question-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, #06d6a0, #3b82f6);
+      color: #fff; font-size: 0.85rem; font-weight: 700;
+      margin-bottom: 14px; flex-shrink: 0;
+    }
+    .question-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+    .question-text-wrap {}
+    .question-bn { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+    .question-en { color: var(--text-secondary); font-size: 0.9rem; }
+    .options-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .option-btn {
+      position: relative; flex: 1; min-width: 80px;
+      background: var(--bg-card); border: 1.5px solid var(--border);
+      border-radius: 12px; padding: 12px 16px;
+      color: var(--text-primary); font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; text-align: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s, color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .option-btn:hover { border-color: rgba(6,214,160,0.4); transform: translateY(-2px); }
+    .option-btn.selected {
+      background: linear-gradient(135deg, rgba(6,214,160,0.2), rgba(59,130,246,0.2));
+      border-color: #06d6a0; color: var(--text-primary);
+    }
+    .option-btn.selected::after {
+      content: '✓'; position: absolute; top: -8px; right: -8px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #06d6a0; color: #fff;
+      font-size: 0.7rem; display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* SUBMIT AREA */
+    .quiz-submit-area { text-align: center; padding: 32px 0 16px; }
+    .quiz-submit-area p { color: var(--text-secondary); margin-top: 12px; font-size: 0.9rem; }
+
+    /* RESULT CARD */
+    .result-card { border-radius: 20px; padding: 40px; text-align: center; display: none; margin-bottom: 40px; }
+    .result-card.show { display: block; }
+    .result-card.low { background: rgba(6,214,160,0.1); border: 2px solid rgba(6,214,160,0.4); }
+    .result-card.moderate { background: rgba(245,158,11,0.1); border: 2px solid rgba(245,158,11,0.4); }
+    .result-card.high { background: rgba(239,68,68,0.1); border: 2px solid rgba(239,68,68,0.4); }
+    .result-icon { font-size: 4rem; margin-bottom: 16px; }
+    .result-risk { font-size: 1rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+    .result-card.low .result-risk { color: #06d6a0; }
+    .result-card.moderate .result-risk { color: #f59e0b; }
+    .result-card.high .result-risk { color: #ef4444; }
+    .result-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
+    .result-score { font-size: 1rem; color: var(--text-secondary); margin-bottom: 16px; }
+    .result-bn { color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
+    .result-en { color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+    .result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .result-meter { margin: 20px auto 28px; max-width: 320px; }
+    .meter-bg { height: 12px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .meter-fill { height: 100%; border-radius: 8px; transition: width 0.8s ease; }
+    .result-card.low .meter-fill { background: linear-gradient(90deg, #06d6a0, #10b981); }
+    .result-card.moderate .meter-fill { background: linear-gradient(90deg, #f59e0b, #f97316); }
+    .result-card.high .meter-fill { background: linear-gradient(90deg, #ef4444, #dc2626); }
+
+    /* INFO BANNER */
+    .info-banner {
+      background: var(--bg-card); backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 24px 28px; margin-bottom: 32px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .info-banner-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .info-banner h4 { font-weight: 700; margin-bottom: 4px; }
+    .info-banner p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      position: relative; z-index: 1; background: var(--bg-card);
+      backdrop-filter: blur(16px); border-top: 1px solid var(--border); padding: 48px 0 28px;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-top { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; margin-bottom: 40px; }
+    .footer-brand .nav-logo { font-size: 1.3rem; }
+    .footer-brand p { color: var(--text-secondary); font-size: 0.9rem; margin-top: 10px; max-width: 280px; line-height: 1.6; }
+    .footer-links h4 { font-weight: 700; margin-bottom: 16px; font-size: 0.95rem; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #06d6a0; }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { color: var(--text-secondary); font-size: 0.85rem; }
+
+    /* WHATSAPP */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 200;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .wa-pulse {
+      position: absolute; width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(37,211,102,0.4); animation: waPulse 2s ease-out infinite;
+    }
+    @keyframes waPulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; flex-direction: column;
+        position: absolute; top: 68px; left: 0; right: 0;
+        background: var(--nav-bg); backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border); padding: 16px; gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: block; }
+      .options-row { flex-direction: column; }
+      .option-btn { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="orbs" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Sleep<span>ApneaBD</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#how-it-works">How It Works</a></li>
+      <li><a href="index.html#signs">Signs</a></li>
+      <li><a href="index.html#why-us">Why Us</a></li>
+      <li><a href="index.html#doctor">Doctor</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <a href="sleep-apnea-assessment.html" class="btn-nav-cta">Book Now</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="fade-up">
+        <span class="section-label">Free Assessment</span>
+        <h1>Sleep Apnea <span class="gradient-text">Risk Assessment</span></h1>
+        <p>আপনার স্লিপ অ্যাপনিয়ার ঝুঁকি জানুন — Answer 8 simple questions to find out your risk level. Takes less than 3 minutes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quiz-section">
+    <div class="container">
+
+      <div class="info-banner fade-up">
+        <div class="info-banner-icon">ℹ️</div>
+        <div>
+          <h4>STOP-BANG Questionnaire</h4>
+          <p>This validated clinical tool is used worldwide to screen for obstructive sleep apnea risk. এটি একটি বৈজ্ঞানিক প্রশ্নপত্র যা আন্তর্জাতিকভাবে স্বীকৃত। Your results are not a medical diagnosis — please consult a specialist for formal evaluation.</p>
+        </div>
+      </div>
+
+      <!-- PROGRESS -->
+      <div class="progress-wrap fade-up" id="progressWrap">
+        <div class="progress-header">
+          <span class="progress-label">Your Progress</span>
+          <span class="progress-count" id="progressCount">0 of 8 answered</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- RESULT CARD (hidden until submit) -->
+      <div class="result-card" id="resultCard" role="alert" aria-live="polite">
+        <div class="result-icon" id="resultIcon"></div>
+        <div class="result-risk" id="resultRisk"></div>
+        <div class="result-title" id="resultTitle"></div>
+        <div class="result-score" id="resultScore"></div>
+        <div class="result-meter">
+          <div class="meter-bg"><div class="meter-fill" id="meterFill" style="width:0%"></div></div>
+        </div>
+        <p class="result-bn" id="resultBn"></p>
+        <p class="result-en" id="resultEn"></p>
+        <div class="result-actions" id="resultActions"></div>
+      </div>
+
+      <!-- QUESTIONS -->
+      <form id="quizForm" novalidate>
+
+        <!-- Q1: Snoring -->
+        <div class="question-card fade-up" data-q="1">
+          <div class="question-header">
+            <div class="question-number">S</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">নাক ডাকা — Snoring</div>
+              <div class="question-en">Do you snore loudly (louder than talking or loud enough to be heard through closed doors)?</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="Snoring question">
+            <button type="button" class="option-btn" data-q="1" data-val="yes" data-score="1">হ্যাঁ / Yes</button>
+            <button type="button" class="option-btn" data-q="1" data-val="no" data-score="0">না / No</button>
+          </div>
+        </div>
+
+        <!-- Q2: Tired -->
+        <div class="question-card fade-up" data-q="2">
+          <div class="question-header">
+            <div class="question-number">T</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">ক্লান্তি — Tired</div>
+              <div class="question-en">Do you often feel tired, fatigued, or sleepy during the daytime (such as falling asleep during driving)?</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="Tiredness question">
+            <button type="button" class="option-btn" data-q="2" data-val="yes" data-score="1">হ্যাঁ / Yes</button>
+            <button type="button" class="option-btn" data-q="2" data-val="no" data-score="0">না / No</button>
+            <button type="button" class="option-btn" data-q="2" data-val="sometimes" data-score="0.5">কখনো কখনো / Sometimes</button>
+          </div>
+        </div>
+
+        <!-- Q3: Observed -->
+        <div class="question-card fade-up" data-q="3">
+          <div class="question-header">
+            <div class="question-number">O</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">পর্যবেক্ষণ — Observed</div>
+              <div class="question-en">Has anyone observed you stop breathing or choking/gasping during your sleep?</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="Observed question">
+            <button type="button" class="option-btn" data-q="3" data-val="yes" data-score="1">হ্যাঁ / Yes</button>
+            <button type="button" class="option-btn" data-q="3" data-val="no" data-score="0">না / No</button>
+          </div>
+        </div>
+
+        <!-- Q4: Pressure -->
+        <div class="question-card fade-up" data-q="4">
+          <div class="question-header">
+            <div class="question-number">P</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">রক্তচাপ — Blood Pressure</div>
+              <div class="question-en">Do you have or are you being treated for high blood pressure (hypertension)?</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="Blood pressure question">
+            <button type="button" class="option-btn" data-q="4" data-val="yes" data-score="1">হ্যাঁ / Yes</button>
+            <button type="button" class="option-btn" data-q="4" data-val="no" data-score="0">না / No</button>
+          </div>
+        </div>
+
+        <!-- Q5: BMI -->
+        <div class="question-card fade-up" data-q="5">
+          <div class="question-header">
+            <div class="question-number">B</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">BMI — শরীরের ভর সূচক</div>
+              <div class="question-en">Is your Body Mass Index (BMI) greater than 35 kg/m²? (Overweight/obese by clinical standard)</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="BMI question">
+            <button type="button" class="option-btn" data-q="5" data-val="yes" data-score="1">হ্যাঁ / Yes</button>
+            <button type="button" class="option-btn" data-q="5" data-val="no" data-score="0">না / No</button>
+          </div>
+        </div>
+
+        <!-- Q6: Age -->
+        <div class="question-card fade-up" data-q="6">
+          <div class="question-header">
+            <div class="question-number">A</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">বয়স — Age</div>
+              <div class="question-en">Are you older than 50 years of age?</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="Age question">
+            <button type="button" class="option-btn" data-q="6" data-val="yes" data-score="1">হ্যাঁ / Yes</button>
+            <button type="button" class="option-btn" data-q="6" data-val="no" data-score="0">না / No</button>
+          </div>
+        </div>
+
+        <!-- Q7: Neck -->
+        <div class="question-card fade-up" data-q="7">
+          <div class="question-header">
+            <div class="question-number">N</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">গলার মাপ — Neck Circumference</div>
+              <div class="question-en">Is your neck circumference greater than 40 cm (approximately 16 inches)?</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="Neck circumference question">
+            <button type="button" class="option-btn" data-q="7" data-val="yes" data-score="1">হ্যাঁ / Yes</button>
+            <button type="button" class="option-btn" data-q="7" data-val="no" data-score="0">না / No</button>
+          </div>
+        </div>
+
+        <!-- Q8: Gender -->
+        <div class="question-card fade-up" data-q="8">
+          <div class="question-header">
+            <div class="question-number">G</div>
+            <div class="question-text-wrap">
+              <div class="question-bn">লিঙ্গ — Gender</div>
+              <div class="question-en">Are you male? (Males have a higher statistical risk of obstructive sleep apnea)</div>
+            </div>
+          </div>
+          <div class="options-row" role="group" aria-label="Gender question">
+            <button type="button" class="option-btn" data-q="8" data-val="yes" data-score="1">হ্যাঁ / Yes (Male)</button>
+            <button type="button" class="option-btn" data-q="8" data-val="no" data-score="0">না / No (Female)</button>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="quiz-submit-area fade-up">
+          <button type="submit" class="btn-primary" id="submitBtn" disabled>
+            Calculate My Risk Score →
+          </button>
+          <p id="submitHint">Please answer all 8 questions to see your result.</p>
+        </div>
+
+      </form>
+
+      <!-- DISCLAIMER -->
+      <div class="info-banner fade-up" style="margin-top: 16px;">
+        <div class="info-banner-icon">⚕️</div>
+        <div>
+          <h4>Medical Disclaimer</h4>
+          <p>This screening tool is for informational purposes only and does not constitute a medical diagnosis. এই স্ক্রিনিং টুলটি শুধুমাত্র তথ্যের জন্য। For a formal evaluation and treatment, please consult our specialists at SleepApneaBD.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">Sleep<span>ApneaBD</span></a>
+        <p>Bangladesh's first sleep lab, founded in 2005. Trusted by 5,000+ patients.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sleep-apnea-assessment.html">Assessment</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/880" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li><a href="mailto:info@sleepapneabd.com">Email Us</a></li>
+          <li><a href="contact.html">Get Directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 SleepApneaBD. All rights reserved.</p>
+      <p>Bangladesh's First Sleep Lab Since 2005</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/880" class="whatsapp-float" aria-label="Chat on WhatsApp" target="_blank" rel="noopener noreferrer">
+  <span class="wa-pulse"></span>💬
+</a>
+
+<script>
+  // Theme
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  html.setAttribute('data-theme', savedTheme);
+  themeToggle.textContent = savedTheme === 'light' ? '☀️' : '🌙';
+  themeToggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    themeToggle.textContent = next === 'light' ? '☀️' : '🌙';
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  // Fade-up
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Quiz logic
+  const answers = {}; // { qNum: { val, score } }
+  const TOTAL = 8;
+
+  function updateProgress() {
+    const answered = Object.keys(answers).length;
+    const pct = (answered / TOTAL) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressCount').textContent = answered + ' of ' + TOTAL + ' answered';
+    const submitBtn = document.getElementById('submitBtn');
+    const hint = document.getElementById('submitHint');
+    if (answered === TOTAL) {
+      submitBtn.disabled = false;
+      hint.textContent = 'Great! All questions answered. Click to see your result.';
+    } else {
+      submitBtn.disabled = true;
+      hint.textContent = 'Please answer all 8 questions to see your result. (' + (TOTAL - answered) + ' remaining)';
+    }
+  }
+
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.dataset.q;
+      const val = btn.dataset.val;
+      const score = parseFloat(btn.dataset.score);
+
+      // Deselect siblings
+      document.querySelectorAll(`.option-btn[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+
+      answers[q] = { val, score };
+
+      // Mark card answered
+      const card = document.querySelector(`.question-card[data-q="${q}"]`);
+      if (card) card.classList.add('answered');
+
+      updateProgress();
+    });
+  });
+
+  document.getElementById('quizForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (Object.keys(answers).length < TOTAL) return;
+
+    let rawScore = 0;
+    Object.values(answers).forEach(a => rawScore += a.score);
+    const score = Math.floor(rawScore);
+
+    const resultCard = document.getElementById('resultCard');
+    resultCard.className = 'result-card';
+
+    let level, icon, riskLabel, title, bn, en, meterPct;
+    const actions = document.getElementById('resultActions');
+
+    if (score <= 2) {
+      level = 'low';
+      icon = '✅';
+      riskLabel = 'Low Risk';
+      title = 'Low Risk of Sleep Apnea';
+      bn = 'আপনার স্লিপ অ্যাপনিয়ার ঝুঁকি কম। তবে যদি আপনি ঘুমের সমস্যায় ভোগেন তাহলে বিশেষজ্ঞের পরামর্শ নিন।';
+      en = 'Your responses suggest a low risk of obstructive sleep apnea. Maintain healthy sleep hygiene and monitor any new symptoms. If symptoms develop, book a consultation.';
+      meterPct = Math.max(10, (score / 8) * 100);
+      actions.innerHTML = `
+        <a href="articles.html" class="btn-outline">Read Sleep Tips</a>
+        <a href="contact.html" class="btn-primary">Book Check-up →</a>
+      `;
+    } else if (score <= 4) {
+      level = 'moderate';
+      icon = '⚠️';
+      riskLabel = 'Moderate Risk';
+      title = 'Moderate Risk — Evaluation Recommended';
+      bn = 'আপনার স্লিপ অ্যাপনিয়ার ঝুঁকি মাঝারি। আমরা একটি নিশ্চিত পরীক্ষা-নিরীক্ষার জন্য বিশেষজ্ঞের সাথে পরামর্শ করার পরামর্শ দিচ্ছি।';
+      en = 'You have a moderate risk of sleep apnea. We strongly recommend a consultation with our sleep specialist and potentially a formal sleep study for accurate diagnosis.';
+      meterPct = (score / 8) * 100;
+      actions.innerHTML = `
+        <a href="contact.html" class="btn-outline">Book Consultation</a>
+        <a href="https://wa.me/880" target="_blank" rel="noopener noreferrer" class="btn-primary">WhatsApp Us →</a>
+      `;
+    } else {
+      level = 'high';
+      icon = '🚨';
+      riskLabel = 'High Risk';
+      title = 'High Risk — Urgent Evaluation Needed';
+      bn = 'আপনার স্লিপ অ্যাপনিয়ার ঝুঁকি বেশি। অবিলম্বে একজন বিশেষজ্ঞ চিকিৎসকের সাথে যোগাযোগ করুন। চিকিৎসা না করলে এটি হৃদরোগ ও স্ট্রোকের ঝুঁকি বাড়াতে পারে।';
+      en = 'You are at high risk of obstructive sleep apnea. Please book an urgent consultation. Untreated sleep apnea significantly increases risk of heart disease, stroke, and diabetes. Early treatment is highly effective.';
+      meterPct = (score / 8) * 100;
+      actions.innerHTML = `
+        <a href="contact.html" class="btn-outline">Call Us Now</a>
+        <a href="https://wa.me/880" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Help Now →</a>
+      `;
+    }
+
+    resultCard.classList.add(level, 'show');
+    document.getElementById('resultIcon').textContent = icon;
+    document.getElementById('resultRisk').textContent = riskLabel;
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultScore').textContent = `Your STOP-BANG Score: ${score} / 8`;
+    document.getElementById('resultBn').textContent = bn;
+    document.getElementById('resultEn').textContent = en;
+
+    // Animate meter
+    setTimeout(() => {
+      document.getElementById('meterFill').style.width = meterPct + '%';
+    }, 100);
+
+    // Scroll to result
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>
