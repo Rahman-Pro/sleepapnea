@@ -1,260 +1,1501 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sleep Apnea & Breathing Clinic | DSRC Dhaka</title>
-    <meta name="description" content="Trusted Sleep Clinic in Dhaka for Sleep Apnea diagnosis, Sleep Study, CPAP setup and snoring treatment.">
-    <style>
-    /* ═══════════════════════════════════════════════════════
-       ROOT VARIABLES
-       ═══════════════════════════════════════════════════════ */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Apnea &amp; Breathing Clinic | DSRC Dhaka</title>
+  <meta name="description" content="Bangladesh's first sleep apnea clinic in Dhaka. Expert diagnosis, CPAP setup, and snoring treatment by Prof. Dr. AKM Mosharraf Hossain." />
+  <meta name="keywords" content="sleep apnea Bangladesh, sleep clinic Dhaka, CPAP setup, snoring treatment, sleep study" />
+  <meta property="og:title" content="Sleep Apnea &amp; Breathing Clinic | DSRC Dhaka" />
+  <meta property="og:description" content="Bangladesh's first sleep apnea clinic in Dhaka. Expert diagnosis, CPAP setup, and snoring treatment." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS Reset & Base ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    /* ─── CSS Variables ─────────────────────────────────────── */
     :root {
-        --bg-dark: #020617;
-        --primary: #0f172a;
-        --accent: #10b4b2;
-        --accent-hover: #0f9ca0;
-        --accent-soft: #e0fbff;
-        --text-main: #111827;
-        --text-muted: #6b7280;
-        --text-slate: #4b5563;
-        --text-light: #64748b;
-        --card-bg: #ffffff;
-        --soft-bg: #edf7fb;
-        --border-soft: #e5e7eb;
-        --shadow-card: 0 12px 35px rgba(15, 23, 42, 0.08);
-        --shadow-accent: 0 18px 45px rgba(15, 118, 110, 0.45);
-        --radius-pill: 999px;
-        --radius-card: 20px;
-        --radius-lg: 26px;
+      --bg: #020617;
+      --bg-secondary: #0f172a;
+      --bg-card: rgba(255,255,255,0.05);
+      --border-glass: rgba(255,255,255,0.1);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-green: #06d6a0;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --gradient: linear-gradient(135deg, #06d6a0, #3b82f6, #8b5cf6);
+      --gradient-btn: linear-gradient(135deg, #06d6a0 0%, #3b82f6 100%);
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.4);
+      --nav-height: 72px;
+      --transition: all 0.3s ease;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --bg-secondary: #e2e8f0;
+      --bg-card: rgba(255,255,255,0.8);
+      --border-glass: rgba(0,0,0,0.1);
+      --text: #0f172a;
+      --text-muted: #475569;
+      --shadow-glass: 0 8px 32px rgba(0,0,0,0.12);
     }
 
+    /* ─── Body ──────────────────────────────────────────────── */
     body {
-        margin: 0;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-        background: #f8fafc;
-        color: var(--text-main);
-        overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
     }
 
-    .section { padding: 3.5rem 1.5rem; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-title { font-size: 2rem; font-weight: 800; text-align: center; color: #02131f; margin: 0 0 2.25rem; }
+    /* ─── Background Orbs ───────────────────────────────────── */
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+      animation: floatOrb 20s ease-in-out infinite;
+    }
+    [data-theme="light"] .orb { opacity: 0.10; }
+    .orb-1 { width: 600px; height: 600px; background: #06d6a0; top: -200px; left: -200px; animation-delay: 0s; }
+    .orb-2 { width: 500px; height: 500px; background: #3b82f6; top: 30%; right: -150px; animation-delay: -7s; }
+    .orb-3 { width: 400px; height: 400px; background: #8b5cf6; bottom: -100px; left: 30%; animation-delay: -14s; }
+    .orb-4 { width: 300px; height: 300px; background: #06d6a0; bottom: 20%; right: 20%; animation-delay: -5s; }
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -60px) scale(1.1); }
+      66% { transform: translate(-30px, 40px) scale(0.9); }
+    }
 
-    /* HERO */
-    .hero-main { background: radial-gradient(circle at top left, #e0f2fe 0, #f4f7fb 45%, #f4f7fb 100%); padding: 3.5rem 1.5rem; }
-    .hero-main-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,1.3fr); gap: 2.5rem; align-items: center; }
-    .hero-main-text h1 { font-size: clamp(2.3rem,3.5vw,3rem); font-weight: 800; color: #02131f; margin: 0 0 0.75rem; }
-    .hero-kicker { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); font-weight: 700; margin-bottom: 0.45rem; }
-    .hero-main-sub { font-size: 1.02rem; color: var(--text-slate); max-width: 32rem; margin-bottom: 1.1rem; }
-    .hero-main-list { list-style: disc; padding-left: 1.15rem; margin: 0 0 1.7rem; font-size: 0.96rem; color: var(--text-muted); }
-    .hero-main-list li+li { margin-top: 0.3rem; }
-    .hero-main-cta, .btn-primary, .ws-cta { display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 1.9rem; border-radius: var(--radius-pill); background: var(--accent); color: #fff; font-weight: 700; font-size: 0.98rem; text-decoration: none; box-shadow: var(--shadow-accent); transition: background .2s ease; }
-    .hero-main-cta:hover, .btn-primary:hover, .ws-cta:hover { background: var(--accent-hover); }
-    .hero-main-visual { border-radius: 28px; overflow: hidden; box-shadow: 0 22px 60px rgba(15,23,42,.35); }
-    .hero-main-visual img { width: 100%; height: auto; display: block; object-fit: cover; }
+    /* ─── Utility ───────────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 6rem 0; position: relative; z-index: 1; }
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 1rem;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-glass);
+      transition: var(--transition);
+    }
+    .glass-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+    [data-theme="light"] .glass-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary {
+      background: var(--gradient-btn);
+      color: #fff;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6,214,160,0.4); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(10px);
+    }
+    .btn-outline:hover { background: var(--bg-card); transform: translateY(-2px); }
+    .section-label {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header .section-subtitle { margin: 0 auto; }
 
-    /* FLOW PILLS */
-    .section-flow { background: #f5f7fb; padding: 3rem 1.5rem 3.5rem; }
-    .flow-rail { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: .9rem; }
-    .flow-pill { display: flex; align-items: center; gap: .9rem; padding: .85rem 1.1rem; border-radius: var(--radius-pill); background: var(--card-bg); box-shadow: 0 10px 30px rgba(15,23,42,.05); border: 1px solid #e0ecf7; }
-    .flow-num { width: 30px; height: 30px; border-radius: var(--radius-pill); background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; flex-shrink: 0; }
-    .flow-pill h3 { font-size: .98rem; font-weight: 700; margin: 0 0 2px; color: #02131f; }
-    .flow-pill p { margin: 0; font-size: .93rem; color: var(--text-slate); }
+    /* ─── Scroll Reveal ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* SIGNS CHIPS */
-    .section-signs-chip { background: var(--card-bg); padding: 3.2rem 1.5rem; }
-    .signs-chip-lead { max-width: 620px; margin: 0 auto 1.8rem; text-align: center; font-size: 1rem; color: var(--text-slate); }
-    .signs-chip-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
-    .signs-chip-item { display: flex; align-items: flex-start; gap: .8rem; padding: .9rem 1.05rem; border-radius: var(--radius-pill); background: #f1f5f9; border: 1px solid #e2e8f0; box-shadow: 0 10px 26px rgba(15,23,42,.04); }
-    .signs-chip-icon { width: 38px; height: 38px; border-radius: var(--radius-pill); background: #e0f2fe; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-    .signs-chip-item h3 { font-size: .98rem; font-weight: 700; color: #02131f; margin: 0 0 2px; }
-    .signs-chip-item h3 a { color: inherit; text-decoration: none; }
-    .signs-chip-item h3 a:hover { color: #0ea5e9; text-decoration: underline; }
-    .signs-chip-item p { margin: 0; font-size: .93rem; color: var(--text-slate); line-height: 1.5; }
+    /* ══════════════════════════════════════════════════════════
+       NAVBAR
+       ══════════════════════════════════════════════════════════ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: var(--transition);
+      padding: 0 1.5rem;
+    }
+    .navbar.scrolled {
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    }
+    [data-theme="light"] .navbar.scrolled {
+      background: rgba(248, 250, 252, 0.85);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-card); }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+    .theme-toggle:hover { transform: scale(1.1); background: var(--bg-card); }
+    .hamburger {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text);
+      width: 40px; height: 40px;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0; right: 0;
+      background: rgba(2, 6, 23, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    [data-theme="light"] .mobile-menu { background: rgba(248,250,252,0.95); }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { background: var(--bg-card); color: var(--accent-green); }
+    .mobile-menu .btn { margin-top: 0.5rem; justify-content: center; }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-actions .btn { display: none; }
+    }
 
-    /* TRUST STRIPS */
-    .section-trust-alt { background: #0b1727; padding: 3.2rem 1.5rem 3.6rem; }
-    .section-trust-alt .section-title { color: #e5f4ff; }
-    .trust-strip { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: .9rem; }
-    .trust-row { display: flex; align-items: flex-start; gap: .9rem; padding: .95rem 1.1rem; border-radius: 18px; background: rgba(15,23,42,.95); border: 1px solid rgba(148,163,184,.45); }
-    .trust-row-icon { width: 38px; height: 38px; border-radius: var(--radius-pill); background: rgba(15,116,144,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
-    .trust-row h3 { font-size: 1rem; font-weight: 700; margin: 0 0 2px; color: #e5f4ff; }
-    .trust-row p { margin: 0; font-size: .93rem; color: #cbd5f5; line-height: 1.6; }
+    /* ══════════════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 2rem;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+      width: fit-content;
+    }
+    .pulse-dot {
+      width: 10px; height: 10px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6,214,160,0.5); }
+      50% { transform: scale(1.2); opacity: 0.9; box-shadow: 0 0 0 8px rgba(6,214,160,0); }
+    }
+    .hero-heading {
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradientShift 6s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero-sub-heading {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .hero-text { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.75rem; max-width: 480px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .hero-tag {
+      padding: 0.4rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 2rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      backdrop-filter: blur(10px);
+    }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-image-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-img-frame {
+      position: relative;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    }
+    .hero-img-frame img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      display: block;
+      border-radius: 1.5rem;
+    }
+    .hero-float-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 1rem;
+      padding: 0.75rem 1.25rem;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-glass);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-image-wrap { order: -1; }
+      .hero-img-frame img { max-width: 100%; }
+      .hero-float-badge { bottom: -10px; left: 10px; font-size: 0.78rem; }
+    }
 
-    /* LAB BADGE & STATS */
-    .section-lab-badge { background: linear-gradient(135deg,#0b1727,#1e293b); padding: 2rem 1.5rem; text-align: center; }
-    .lab-badge-pill { display: inline-flex; align-items: center; gap: .8rem; padding: .7rem 1.6rem; background: linear-gradient(135deg,var(--accent),var(--accent-hover)); color: #fff; border-radius: var(--radius-pill); font-weight: 700; font-size: 1rem; box-shadow: 0 12px 35px rgba(16,180,178,.4); }
-    .lab-badge-pill .badge-icon { font-size: 1.3rem; }
-    .lab-badge-pill .badge-sub { font-size: .85rem; opacity: .9; font-weight: 400; }
-    .section-lab-stats { background: #f8fafc; padding: 2.5rem 1.5rem; }
-    .lab-stats-grid { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1.5rem; text-align: center; }
-    .lab-stat-card { padding: 1.5rem; background: var(--card-bg); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
-    .lab-stat-number { font-size: 2.2rem; font-weight: 800; }
-    .lab-stat-label { color: var(--text-light); font-weight: 600; }
+    /* ══════════════════════════════════════════════════════════
+       STATS BANNER
+       ══════════════════════════════════════════════════════════ */
+    .stats-section {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .stat-card {
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 420px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    }
 
-    /* SNORING + VIDEO */
-    .section-soft { background: var(--soft-bg); }
-    .two-column { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 2rem; align-items: center; }
-    .lead { font-size: 1.05rem; color: var(--text-main); margin-bottom: 1rem; }
-    .list { list-style: disc; padding-left: 1.1rem; margin: 0 0 1.4rem; color: var(--text-muted); font-size: .95rem; }
-    .snoring-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.2rem; }
-    .btn-outline { display: inline-flex; align-items: center; justify-content: center; padding: .9rem 1.9rem; border-radius: var(--radius-pill); background: transparent; color: var(--primary); font-weight: 600; font-size: .95rem; text-decoration: none; border: 1px solid #cbd5f5; transition: all .2s ease; }
-    .btn-outline:hover { background: #f1f5f9; border-color: #94a3b8; }
-    .video-card { background: var(--bg-dark); border-radius: var(--radius-card); overflow: hidden; box-shadow: 0 18px 55px rgba(15,23,42,.55); border: 2px solid #0ea5e9; aspect-ratio: 16/10; }
-    .video-card video { width: 100%; height: 100%; display: block; object-fit: cover; }
+    /* ══════════════════════════════════════════════════════════
+       HOW IT WORKS
+       ══════════════════════════════════════════════════════════ */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .step-card { padding: 2rem 1.5rem; position: relative; }
+    .step-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-btn);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .step-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .step-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .connector {
+      position: absolute;
+      top: 3.5rem;
+      right: -12px;
+      width: 24px;
+      height: 2px;
+      background: var(--gradient-btn);
+      z-index: 2;
+    }
+    .step-card:last-child .connector { display: none; }
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .connector { display: none; }
+    }
+    @media (max-width: 520px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
 
-    /* WORLD SLEEP DAY */
-    .world-sleep { padding-top: 3rem; padding-bottom: 3.2rem; background: #f5f7fb; }
-    .ws-card { max-width: 720px; margin: 0 auto; background: var(--card-bg); border-radius: var(--radius-lg); padding: 2rem 2.2rem 2.3rem; box-shadow: 0 18px 45px rgba(15,23,42,.08); border: 1px solid #e2e8f0; text-align: center; position: relative; }
-    .ws-bar { position: absolute; top: 0; left: 18%; right: 18%; height: 4px; border-radius: var(--radius-pill); background: linear-gradient(90deg,#22c55e,#0ea5e9,#6366f1); transform: translateY(-50%); }
-    .ws-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .7rem; border-radius: var(--radius-pill); font-size: .75rem; text-transform: uppercase; letter-spacing: .13em; background: #ecfeff; color: #0e7490; border: 1px solid #bae6fd; margin-bottom: .4rem; }
-    .ws-title { font-size: 1.9rem; font-weight: 800; color: #02131f; margin: 0; }
-    .ws-line-main { font-size: 1.02rem; color: #334155; margin: .6rem 0 .3rem; }
-    .ws-line-sub { font-size: .96rem; color: var(--text-light); margin: 0 0 1.4rem; }
+    /* ══════════════════════════════════════════════════════════
+       SIGNS SECTION
+       ══════════════════════════════════════════════════════════ */
+    .signs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .sign-card { padding: 2rem 1.5rem; text-align: center; }
+    .sign-emoji { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    .sign-bn { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .sign-en { color: var(--text-muted); font-size: 0.88rem; }
+    @media (max-width: 900px) {
+      .signs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .signs-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    }
 
-    /* RESPONSIVE */
-    @media(max-width:900px) { .hero-main-inner, .two-column { grid-template-columns: 1fr; } }
-    @media(max-width:768px) { .signs-chip-grid { grid-template-columns: 1fr; } }
-    @media(max-width:640px) { .section { padding: 3rem 1.1rem; } .ws-card { padding: 1.8rem 1.4rem 2.1rem; border-radius: 22px; } .ws-title { font-size: 1.6rem; } .ws-bar { left: 20%; right: 20%; } .snoring-actions { flex-direction: column; align-items: stretch; } .snoring-actions a { width: 100%; justify-content: center; } }
-    </style>
+    /* ══════════════════════════════════════════════════════════
+       WHY US
+       ══════════════════════════════════════════════════════════ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .why-card { padding: 2.5rem 2rem; }
+    .why-icon {
+      width: 56px; height: 56px;
+      border-radius: 1rem;
+      background: var(--gradient-btn);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .why-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .why-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+    @media (max-width: 768px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       DOCTOR SECTION
+       ══════════════════════════════════════════════════════════ */
+    .doctor-inner {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .doctor-card { padding: 2.5rem; text-align: center; }
+    .doctor-avatar {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: var(--gradient-btn);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin: 0 auto 1.5rem;
+      border: 3px solid rgba(255,255,255,0.2);
+    }
+    .doctor-name { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .doctor-title { color: var(--accent-green); font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; }
+    .doctor-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .badge {
+      padding: 0.3rem 0.85rem;
+      border-radius: 2rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid var(--border-glass);
+      color: var(--text-muted);
+      background: var(--bg-card);
+    }
+    .badge.green { border-color: rgba(6,214,160,0.4); color: var(--accent-green); }
+    .badge.blue { border-color: rgba(59,130,246,0.4); color: var(--accent-blue); }
+    .badge.purple { border-color: rgba(139,92,246,0.4); color: var(--accent-purple); }
+    .doctor-content .section-label { margin-bottom: 0.75rem; }
+    .doctor-content .section-title { margin-bottom: 1.25rem; }
+    .doctor-bio { color: var(--text-muted); line-height: 1.8; margin-bottom: 0.75rem; }
+    .doctor-bio-bn { color: var(--text); font-weight: 500; line-height: 1.8; margin-bottom: 1.5rem; }
+    @media (max-width: 900px) {
+      .doctor-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       SNORING / VIDEO SECTION
+       ══════════════════════════════════════════════════════════ */
+    .snoring-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .snoring-text .section-title { margin-bottom: 1rem; }
+    .snoring-text p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
+    .snoring-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .video-wrap {
+      border-radius: 1.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-glass);
+    }
+    .video-wrap video { width: 100%; display: block; }
+    @media (max-width: 768px) {
+      .snoring-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════════════��══════════ */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .review-card { padding: 2rem; }
+    .review-stars { color: #fbbf24; font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .review-text { color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .reviewer-info { display: flex; align-items: center; gap: 1rem; }
+    .reviewer-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gradient-btn);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .reviewer-name { font-weight: 700; font-size: 0.95rem; }
+    .reviewer-role { color: var(--text-muted); font-size: 0.8rem; }
+    @media (max-width: 900px) {
+      .reviews-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       WORLD SLEEP DAY
+       ══════════════════════════════════════════════════════════ */
+    .sleep-day-card {
+      padding: 3.5rem;
+      text-align: center;
+      border-image: var(--gradient) 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .sleep-day-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient);
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .sleep-day-card .gradient-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      padding: 2px;
+      background: var(--gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .sleep-day-icon { font-size: 4rem; display: block; margin-bottom: 1.25rem; }
+    .sleep-day-date {
+      display: inline-block;
+      padding: 0.4rem 1.25rem;
+      background: rgba(6,214,160,0.1);
+      border: 1px solid rgba(6,214,160,0.3);
+      border-radius: 2rem;
+      color: var(--accent-green);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .sleep-day-card .section-title { margin-bottom: 0.75rem; }
+    .sleep-day-card p { color: var(--text-muted); max-width: 520px; margin: 0 auto 2rem; }
+
+    /* ══════════════════════════════════════════════════════════
+       CONTACT / MAP
+       ══════════════════════════════════════════════════════════ */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .map-frame {
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      height: 400px;
+    }
+    .map-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+    .contact-info { padding: 2.5rem; height: 100%; }
+    .contact-info h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 2rem; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .contact-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .contact-icon {
+      width: 44px; height: 44px;
+      border-radius: 0.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.25rem; }
+    .contact-value { font-weight: 600; color: var(--text); font-size: 0.95rem; }
+    @media (max-width: 768px) {
+      .contact-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════ */
+    .footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border-glass);
+      padding: 4rem 0 2rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
+    .footer-tagline { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; max-width: 300px; }
+    .footer-heading { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+    .footer-links a:hover { color: var(--accent-green); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-glass);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy { color: var(--text-muted); font-size: 0.85rem; }
+    .footer-copy a { color: var(--accent-green); text-decoration: none; }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       WHATSAPP FLOAT
+       ══════════════════════════════════════════════════════════ */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 900;
+      width: 60px; height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 25px rgba(37,211,102,0.5);
+      animation: waPulse 3s ease infinite;
+      transition: transform 0.2s ease;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 8px 25px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 8px 35px rgba(37,211,102,0.8), 0 0 0 12px rgba(37,211,102,0.1); }
+    }
+
+    /* ─── Divider ───────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: var(--border-glass);
+      position: relative;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body>
 
-<main id="main-content">
+<!-- ─── Background Orbs ───────────────────────────────────── -->
+<div class="bg-orbs" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+</div>
 
-    <!-- HERO -->
-    <section class="hero-main">
-        <div class="hero-main-inner">
-            <div class="hero-main-text">
-                <p class="hero-kicker">Sleep Doctor in Dhaka | Sleep Specialist Clinic</p>
-                <h1>ঘুম ভাঙুক. ক্লান্তি নয়</h1>
-                <p class="hero-main-sub">
-                    Peaceful ঘুম, সহজ শ্বাস-প্রশ্বাস আর কম নাক ডাকার জন্য expert sleep apnea diagnosis &amp; personalized treatment.
-                    Trusted <strong>Sleep Clinic in Dhaka</strong> for <strong>Sleep Disorder</strong>,
-                    <strong>Insomnia</strong> and professional <strong>Sleep Study</strong> by experienced
-                    <strong>Sleep Apnea Doctors</strong>.
-                </p>
-                <ul class="hero-main-list">
-                    <li>Lab sleep test for snoring and breathing pauses.</li>
-                    <li>Comfort-focused CPAP / BiPAP / oral appliance setup.</li>
-                    <li>Consult experienced Sleep Apnea Doctors in Dhaka, Bangladesh.</li>
-                </ul>
-                <a href="/sleep-apnea-assessment" class="hero-main-cta">Book Your Consultation</a>
-            </div>
-            <div class="hero-main-visual">
-                <img src="https://sleepapneabd.com/wp-content/uploads/2025/11/hero-image.webp"
-                     alt="Sleep Doctor in Dhaka helping patient with Sleep Apnea diagnosis and Sleep Study"
-                     width="600" height="450" loading="eager" fetchpriority="high" decoding="async">
-            </div>
+<!-- ══════════════════════════════════════════════════════════
+     NAVBAR
+     ══════════════════════════════════════════════════════════ -->
+<header>
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="SleepApneaBD Home">SleepApneaBD</a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#signs">Signs</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#doctor">Doctor</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">🌙</button>
+        <a href="#contact" class="btn btn-primary">Book Now</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open mobile menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="#how-it-works" class="mobile-link">How It Works</a>
+    <a href="#signs" class="mobile-link">Signs</a>
+    <a href="#why-us" class="mobile-link">Why Us</a>
+    <a href="#doctor" class="mobile-link">Doctor</a>
+    <a href="#reviews" class="mobile-link">Reviews</a>
+    <a href="contact.html" class="mobile-link">Contact</a>
+    <a href="#contact" class="btn btn-primary">📅 Book Now</a>
+  </nav>
+</header>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════════════ -->
+<main>
+<section class="hero section" aria-labelledby="hero-heading">
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left: Content -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Now Accepting Appointments
         </div>
-    </section>
 
-    <!-- FLOW PILLS -->
-    <section class="section section-flow">
-        <div class="section-inner">
-            <h2 class="section-title">How We Fix Your Night Breathing</h2>
-            <div class="flow-rail">
-                <div class="flow-pill"><span class="flow-num">1</span><div><h3>Quick Sleep &amp; Breathing Check</h3><p>Short ঘুম &amp; নাক ডাকা screening – clinic or online, only a few minutes।</p></div></div>
-                <div class="flow-pill"><span class="flow-num">2</span><div><h3>Measure Night-Time Breathing</h3><p>রাতে oxygen, airflow ও নাক ডাকা রেকর্ড হয়ে clear রিপোর্ট তৈরি হয়।</p></div></div>
-                <div class="flow-pill"><span class="flow-num">3</span><div><h3>Keep the Airway Open</h3><p>CPAP, BiPAP বা oral device দিয়ে ঘুমের সময় শ্বাস-প্রশ্বাস smooth রাখা হয়।</p></div></div>
-                <div class="flow-pill"><span class="flow-num">4</span><div><h3>Deep Sleep, Fresh Morning</h3><p>ভালো ঘুম, কম নাক ডাকা ও বেশি এনার্জি – friendly follow-up সহ।</p></div></div>
-            </div>
+        <h1 class="hero-heading" id="hero-heading">ঘুম ভাঙুক.<br/>ক্লান্তি নয়</h1>
+        <p class="hero-sub-heading">Wake Up Restored. Not Exhausted.</p>
+        <p class="hero-text">
+          Bangladesh's first and most trusted sleep apnea clinic in Dhaka. Expert diagnosis, CPAP setup, and personalised snoring treatment — so you can breathe easy and sleep deeply again.
+          <br/><br/>
+          ঢাকায় বাংলাদেশের প্রথম ও সবচেয়ে বিশ্বস্ত স্লিপ অ্যাপনিয়া ক্লিনিক।
+        </p>
+
+        <div class="hero-tags" role="list" aria-label="Services offered">
+          <span class="hero-tag" role="listitem">🔬 Sleep Study</span>
+          <span class="hero-tag" role="listitem">😮‍💨 CPAP Setup</span>
+          <span class="hero-tag" role="listitem">🔊 Snoring Treatment</span>
+          <span class="hero-tag" role="listitem">�� Insomnia Care</span>
         </div>
-    </section>
 
-    <!-- SIGNS -->
-    <section class="section section-signs-chip">
-        <div class="section-inner">
-            <h2 class="section-title">Signs Your Night Breathing Needs Help</h2>
-            <p class="signs-chip-lead">নিচের লক্ষণগুলো বারবার হলে ঘুমের মধ্যে শ্বাস-প্রশ্বাস কেমন চলছে তা দেখে নেওয়া ভালো।</p>
-            <div class="signs-chip-grid">
-                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">😵‍💫</div><div><h3><a href="/broken-sleep-at-night/">ঘুম ভেঙে যায়</a></h3><p>রাতে বারবার জেগে ওঠা, deep sleep ঠিকমতো হয় না, সকালেও ক্লান্ত লাগে।</p></div></article>
-                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">😮‍💨</div><div><h3><a href="/breathing-stops-during-sleep/">শ্বাস আটকে যায়</a></h3><p>ঘুমের মধ্যে কিছু সেকেন্ড শ্বাস বন্ধ, তারপর জোরে গ্যাস্প করে শ্বাস নেওয়া।</p></div></article>
-                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">😴</div><div><h3><a href="/snoring-problem-at-night/">জোরে নাক ডাকা</a></h3><p>নাক ডাকার শব্দ খুব জোরে, মাঝে choking বা হাঁপিয়ে ওঠার মতো শব্দ শোনা যায়।</p></div></article>
-                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">🥱</div><div><h3><a href="/daytime-sleepiness/">দিনভর ঘুম ঘুম ভাব</a></h3><p>অফিসে চোখ ঘুমে আসে, concentration কমে যায়, মাথা ভার লাগতে থাকে।</p></div></article>
-            </div>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary" aria-label="Book an appointment">📅 Book Appointment</a>
+          <a href="sleep-apnea-assessment.html" class="btn btn-outline" aria-label="Take the sleep test">🧪 Take Sleep Test</a>
         </div>
-    </section>
+      </div>
 
-    <!-- TRUST -->
-    <section class="section section-trust-alt">
-        <div class="section-inner">
-            <h2 class="section-title">Why Patients Trust Our Sleep &amp; Breathing Care</h2>
-            <div class="trust-strip">
-                <article class="trust-row"><div class="trust-row-icon" aria-hidden="true">👨‍⚕️</div><div><h3>Specialised Sleep Apnea Team</h3><p>Dedicated ডাক্তার টিম শুধু sleep apnea ও শ্বাস-প্রশ্বাসের সমস্যা নিয়ে কাজ করে – তাই diagnosis বেশি নির্ভুল।</p></div></article>
-                <article class="trust-row"><div class="trust-row-icon" aria-hidden="true">📊</div><div><h3>Clear, Data-Driven Report</h3><p>একই রিপোর্টে oxygen, airflow, নাক ডাকা ও heart-rate দেখা যায় – আপনি নিজেও সহজে বুঝতে পারবেন।</p></div></article>
-                <article class="trust-row"><div class="trust-row-icon" aria-hidden="true">🤝</div><div><h3>Comfort &amp; Long-Term Support</h3><p>CPAP / device আরামদায়ক করে সেট-আপ, তারপর leak, pressure, habit – সব কিছুর জন্য চলমান follow-up ও guide।</p></div></article>
-            </div>
+      <!-- Right: Image -->
+      <div class="hero-image-wrap">
+        <div class="hero-img-frame">
+          <img
+            src="https://sleepapneabd.com/wp-content/uploads/2025/11/hero-image.webp"
+            alt="Sleep apnea clinic doctor reviewing patient sleep study results"
+            width="500"
+            height="420"
+            loading="eager"
+          />
+          <div class="hero-float-badge" aria-label="Now accepting appointments">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            ✅ Now Accepting Appointments
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- LAB BADGE -->
-    <section class="section section-lab-badge" aria-label="First Sleep Lab in Bangladesh">
-        <div class="section-inner">
-            <div class="lab-badge-pill">
-                <span class="badge-icon" aria-hidden="true">🏆</span>
-                <strong>বাংলাদেশের প্রথম Sleep Lab - Since 2005</strong>
-                <span class="badge-sub">by Prof. Dr. AKM Mosharraf Hossain</span>
-            </div>
+<!-- ══════════════════════════════════════════════════════════
+     STATS BANNER
+     ══════════════════════════════════════════════════════════ -->
+<section class="stats-section" aria-labelledby="stats-heading">
+  <div class="container">
+    <h2 id="stats-heading" class="sr-only">Clinic Statistics</h2>
+    <div class="stats-grid">
+      <div class="stat-card glass-card reveal" aria-label="20 plus years experience">
+        <div class="stat-number" data-target="20" data-suffix="+">0</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card glass-card reveal" style="transition-delay:0.1s" aria-label="First sleep lab in Bangladesh">
+        <div class="stat-number" data-static="1st">1st</div>
+        <div class="stat-label">Sleep Lab in BD</div>
+      </div>
+      <div class="stat-card glass-card reveal" style="transition-delay:0.2s" aria-label="5000 plus patients treated">
+        <div class="stat-number" data-target="5000" data-suffix="+">0</div>
+        <div class="stat-label">Patients Treated</div>
+      </div>
+      <div class="stat-card glass-card reveal" style="transition-delay:0.3s" aria-label="24/7 monitoring available">
+        <div class="stat-number" data-static="24/7">24/7</div>
+        <div class="stat-label">Monitoring</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HOW IT WORKS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="how-it-works" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Our Process</span>
+      <h2 class="section-title" id="how-heading">How It Works</h2>
+      <p class="section-subtitle">From first consultation to deep, restful sleep — we guide you every step of the way.</p>
+    </div>
+
+    <div class="steps-grid">
+      <!-- Step 1 -->
+      <article class="step-card glass-card reveal" aria-label="Step 1: Quick Screening">
+        <div class="connector" aria-hidden="true"></div>
+        <div class="step-num-badge" aria-label="Step 01">01</div>
+        <span class="step-icon" aria-hidden="true">🩺</span>
+        <h3 class="step-title">Quick Screening</h3>
+        <p class="step-desc">Initial consultation to understand your sleep issues, symptoms, and medical history in detail.</p>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="step-card glass-card reveal" style="transition-delay:0.1s" aria-label="Step 2: Night Breathing Test">
+        <div class="connector" aria-hidden="true"></div>
+        <div class="step-num-badge" aria-label="Step 02">02</div>
+        <span class="step-icon" aria-hidden="true">📊</span>
+        <h3 class="step-title">Night Breathing Test</h3>
+        <p class="step-desc">Comprehensive polysomnography sleep study to accurately diagnose your condition overnight.</p>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="step-card glass-card reveal" style="transition-delay:0.2s" aria-label="Step 3: Airway Treatment">
+        <div class="connector" aria-hidden="true"></div>
+        <div class="step-num-badge" aria-label="Step 03">03</div>
+        <span class="step-icon" aria-hidden="true">💨</span>
+        <h3 class="step-title">Airway Treatment</h3>
+        <p class="step-desc">Personalised CPAP/BiPAP therapy setup with proper mask fitting and pressure calibration.</p>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="step-card glass-card reveal" style="transition-delay:0.3s" aria-label="Step 4: Deep Sleep Restored">
+        <div class="step-num-badge" aria-label="Step 04">04</div>
+        <span class="step-icon" aria-hidden="true">😴</span>
+        <h3 class="step-title">Deep Sleep Restored</h3>
+        <p class="step-desc">Follow-up care and long-term support to ensure your treatment continues to be effective.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SIGNS SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="signs" aria-labelledby="signs-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Warning Signs</span>
+      <h2 class="section-title" id="signs-heading">Signs You May Have Sleep Apnea</h2>
+      <p class="section-subtitle">Don't ignore these symptoms — early diagnosis can transform your health and quality of life.</p>
+    </div>
+
+    <div class="signs-grid">
+      <article class="sign-card glass-card reveal" aria-label="Frequent awakenings">
+        <span class="sign-emoji" aria-hidden="true">😴</span>
+        <h3 class="sign-bn">ঘুম ভেঙে যায়</h3>
+        <p class="sign-en">Frequent awakenings during the night, waking up unrefreshed</p>
+      </article>
+
+      <article class="sign-card glass-card reveal" style="transition-delay:0.1s" aria-label="Breathing stops during sleep">
+        <span class="sign-emoji" aria-hidden="true">😮‍💨</span>
+        <h3 class="sign-bn">শ্বাস আটকে যায়</h3>
+        <p class="sign-en">Breathing stops momentarily during sleep, gasping for air</p>
+      </article>
+
+      <article class="sign-card glass-card reveal" style="transition-delay:0.2s" aria-label="Loud snoring">
+        <span class="sign-emoji" aria-hidden="true">🔊</span>
+        <h3 class="sign-bn">জোরে নাক ডাকা</h3>
+        <p class="sign-en">Loud, persistent snoring that disturbs your partner</p>
+      </article>
+
+      <article class="sign-card glass-card reveal" style="transition-delay:0.3s" aria-label="Daytime sleepiness">
+        <span class="sign-emoji" aria-hidden="true">😪</span>
+        <h3 class="sign-bn">দিনভর ঘুম ঘুম ভাব</h3>
+        <p class="sign-en">Excessive daytime sleepiness, fatigue, and poor concentration</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     WHY US
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="why-us" aria-labelledby="why-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title" id="why-heading">Bangladesh's Most Trusted Sleep Clinic</h2>
+      <p class="section-subtitle">Two decades of expertise, cutting-edge technology, and compassionate care.</p>
+    </div>
+
+    <div class="why-grid">
+      <article class="why-card glass-card reveal" aria-label="Specialised team benefit">
+        <div class="why-icon" aria-hidden="true">👨‍⚕️</div>
+        <h3 class="why-title">Specialised Team</h3>
+        <p class="why-desc">Bangladesh's most experienced sleep medicine team with over 20 years of expertise in diagnosing and treating complex sleep disorders including sleep apnea, insomnia, and hypersomnia.</p>
+      </article>
+
+      <article class="why-card glass-card reveal" style="transition-delay:0.15s" aria-label="Data-driven reports benefit">
+        <div class="why-icon" aria-hidden="true">📋</div>
+        <h3 class="why-title">Data-Driven Reports</h3>
+        <p class="why-desc">Comprehensive, hospital-grade sleep study reports with detailed analysis of your sleep architecture, breathing patterns, oxygen levels, and personalised treatment recommendations.</p>
+      </article>
+
+      <article class="why-card glass-card reveal" style="transition-delay:0.3s" aria-label="Long-term support benefit">
+        <div class="why-icon" aria-hidden="true">🤝</div>
+        <h3 class="why-title">Long-Term Support</h3>
+        <p class="why-desc">Ongoing care and CPAP follow-up with regular check-ins to adjust therapy, ensure compliance, and provide continuous support so you achieve the best possible outcomes long-term.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     DOCTOR PROFILE
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="doctor" aria-labelledby="doctor-heading">
+  <div class="container">
+    <div class="doctor-inner">
+      <!-- Doctor Card -->
+      <div class="doctor-card glass-card reveal">
+        <div class="doctor-avatar" role="img" aria-label="Prof. Dr. AKM Mosharraf Hossain initials MH">MH</div>
+        <div class="doctor-name">Prof. Dr. AKM Mosharraf Hossain</div>
+        <div class="doctor-title">Founder, Bangladesh's First Sleep Lab</div>
+        <div class="doctor-badges" role="list" aria-label="Doctor specializations">
+          <span class="badge green" role="listitem">💤 Sleep Medicine</span>
+          <span class="badge blue" role="listitem">🫁 Pulmonology</span>
+          <span class="badge purple" role="listitem">😮‍💨 CPAP Expert</span>
+          <span class="badge" role="listitem">⭐ 20+ Years</span>
         </div>
-    </section>
+      </div>
 
-    <!-- STATS -->
-    <section class="section section-lab-stats" aria-label="Sleep lab statistics">
-        <div class="section-inner">
-            <div class="lab-stats-grid">
-                <div class="lab-stat-card"><div class="lab-stat-number" style="color:var(--accent);">২০+</div><div class="lab-stat-label">বছরের অভিজ্ঞতা</div></div>
-                <div class="lab-stat-card"><div class="lab-stat-number" style="color:#0ea5e9;">1st</div><div class="lab-stat-label">Sleep Lab</div></div>
-                <div class="lab-stat-card"><div class="lab-stat-number" style="color:#6366f1;">হাজারো</div><div class="lab-stat-label">রোগী সুস্থ</div></div>
-            </div>
+      <!-- Doctor Content -->
+      <div class="doctor-content reveal" style="transition-delay:0.2s">
+        <span class="section-label">Meet the Expert</span>
+        <h2 class="section-title" id="doctor-heading">
+          Leading Sleep Medicine<br/>
+          <span class="gradient-text">Since 2005</span>
+        </h2>
+
+        <p class="doctor-bio-bn">
+          অধ্যাপক ডা. একেএম মোশাররফ হোসেন ২০০৫ সালে বাংলাদেশের প্রথম স্লিপ ল্যাবরেটরি প্রতিষ্ঠা করেন। তিনি স্লিপ মেডিসিন ও পালমোনোলজিতে ২০ বছরেরও বেশি অভিজ্ঞতাসম্পন্ন একজন বিশেষজ্ঞ চিকিৎসক।
+        </p>
+        <p class="doctor-bio">
+          Prof. Dr. AKM Mosharraf Hossain is a pioneering figure in sleep medicine in Bangladesh, having established the country's first dedicated sleep laboratory in 2005. With over two decades of clinical experience in pulmonology and sleep disorders, he has diagnosed and treated more than 5,000 patients suffering from sleep apnea, snoring, insomnia, and other breathing-related sleep conditions.
+        </p>
+        <p class="doctor-bio">
+          His specialisation in CPAP therapy and polysomnography has transformed the lives of countless patients across Bangladesh, making quality sleep healthcare accessible to all.
+        </p>
+        <a href="#contact" class="btn btn-primary">Book with Dr. Hossain</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SNORING + VIDEO SECTION
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="snoring-heading">
+  <div class="container">
+    <div class="snoring-inner">
+      <!-- Left: Text -->
+      <div class="snoring-text reveal">
+        <span class="section-label">Snoring Treatment</span>
+        <h2 class="section-title" id="snoring-heading">
+          Is Snoring Ruining<br/>
+          <span class="gradient-text">Your Sleep?</span>
+        </h2>
+        <p>
+          Snoring is often the first sign of a serious underlying condition — obstructive sleep apnea. Left untreated, it can lead to heart disease, hypertension, diabetes, and severe daytime fatigue.
+        </p>
+        <p>
+          নাক ডাকা শুধু অস্বস্তির বিষয় নয় — এটি স্লিপ অ্যাপনিয়ার সংকেত হতে পারে। আমাদের বিশেষজ্ঞ দল আপনার সমস্যা নির্ণয় করে কার্যকর সমাধান দিতে প্রস্তুত।
+        </p>
+        <p>
+          Our comprehensive approach includes diagnostic sleep studies, lifestyle guidance, CPAP therapy, and surgical referrals when necessary to give you the most effective treatment possible.
+        </p>
+        <div class="snoring-cta">
+          <a href="#contact" class="btn btn-primary">🩺 Book Consultation</a>
+          <a href="sleep-apnea-assessment.html" class="btn btn-outline">📝 Free Assessment</a>
         </div>
-    </section>
+      </div>
 
-    <!-- SNORING + VIDEO -->
-    <section class="section section-soft">
-        <div class="section-inner">
-            <div class="two-column">
-                <div>
-                    <h2 class="section-title" style="text-align:left;">Snoring Is a Breathing Warning</h2>
-                    <p class="lead">Snoring is often the first sign that your airway is collapsing while you sleep.</p>
-                    <ul class="list">
-                        <li>Easy breathing test can show your sleep apnea risk in minutes.</li>
-                        <li>Most patients feel better sleep and calmer breathing within the first weeks of treatment.</li>
-                    </ul>
-                    <div class="snoring-actions">
-                        <a href="/sleep-apnea-assessment" class="btn-primary">Check My Snoring Risk</a>
-                        <a href="/articles/" class="btn-outline">Read More Articles</a>
-                    </div>
-                </div>
-                <div class="video-card">
-                    <video playsinline controls preload="none" loading="lazy"
-                           poster="https://sleepapneabd.com/wp-content/uploads/2025/11/snoring-thumb.webp">
-                        <source src="https://sleepapneabd.com/wp-content/uploads/2025/11/snoring-h264.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+      <!-- Right: Video -->
+      <div class="reveal" style="transition-delay:0.2s">
+        <div class="video-wrap">
+          <video
+            controls
+            preload="none"
+            poster="https://sleepapneabd.com/wp-content/uploads/2025/11/snoring-thumb.webp"
+            aria-label="Snoring and sleep apnea explainer video"
+          >
+            <source src="https://sleepapneabd.com/wp-content/uploads/2025/11/snoring-h264.mp4" type="video/mp4" />
+            Your browser does not support the video tag. Please visit our clinic to learn more.
+          </video>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- WORLD SLEEP DAY -->
-    <section class="section world-sleep">
-        <div class="section-inner">
-            <div class="ws-card">
-                <div class="ws-bar" aria-hidden="true"></div>
-                <div class="ws-header">
-                    <span class="ws-badge">Special Awareness Day</span>
-                    <h2 class="ws-title">World Sleep Day 2027</h2>
-                </div>
-                <p class="ws-line-main">🌙 World Sleep Day is on <strong>September, 10-15</strong></p>
-                <p class="ws-line-sub">ভালো ঘুম ও সুস্থ শ্বাস-প্রশ্বাস নিয়ে ছোট্ট awareness সেশনে আমাদের সাথে যোগ দিন।</p>
-                <a href="/sleep-apnea-assessment" class="ws-cta">Join Our World Sleep Day Event</a>
-            </div>
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="reviews" aria-labelledby="reviews-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Patient Reviews</span>
+      <h2 class="section-title" id="reviews-heading">What Our Patients Say</h2>
+      <p class="section-subtitle">Real stories from real patients whose lives have been transformed by better sleep.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <!-- Review 1 -->
+      <article class="review-card glass-card reveal" aria-label="Review from Rafiqul Islam">
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="review-text">
+          "আমি বছরের পর বছর ঘুমের সমস্যায় ভুগছিলাম। CPAP থেরাপির পর আমার জীবন সম্পূর্ণ বদলে গেছে। এখন রাতে ভালো ঘুমাই, সারাদিন সতেজ থাকি। ডাক্তার এবং পুরো টিমকে আন্তরিক ধন্যবাদ।"
+        </blockquote>
+        <div class="reviewer-info">
+          <div class="reviewer-avatar" aria-hidden="true">RI</div>
+          <div>
+            <div class="reviewer-name">Rafiqul Islam</div>
+            <div class="reviewer-role">CPAP Patient, Dhaka</div>
+          </div>
         </div>
-    </section>
+      </article>
 
+      <!-- Review 2 -->
+      <article class="review-card glass-card reveal" style="transition-delay:0.15s" aria-label="Review from Mrs. Sultana">
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="review-text">
+          "I had my sleep study done at DSRC and the experience was exceptional. The team was professional, the facility was modern, and the report was incredibly detailed. Within two weeks of starting CPAP, I felt like a completely different person — rested, energised, and focused."
+        </blockquote>
+        <div class="reviewer-info">
+          <div class="reviewer-avatar" aria-hidden="true">MS</div>
+          <div>
+            <div class="reviewer-name">Mrs. Sultana</div>
+            <div class="reviewer-role">Sleep Study Patient, Chittagong</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 3 -->
+      <article class="review-card glass-card reveal" style="transition-delay:0.3s" aria-label="Review from Dr. Ahmed">
+        <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote class="review-text">
+          "একজন চিকিৎসক হিসেবে আমি এই ক্লিনিকের পেশাদারিত্ব ও মানসম্পন্ন সেবায় অত্যন্ত মুগ্ধ। প্রফেসর হোসেনের দলটি সত্যিকারের বিশেষজ্ঞ। স্লিপ অ্যাপনিয়ার জন্য বাংলাদেশে এর চেয়ে ভালো কোনো বিকল্প নেই।"
+        </blockquote>
+        <div class="reviewer-info">
+          <div class="reviewer-avatar" aria-hidden="true">DA</div>
+          <div>
+            <div class="reviewer-name">Dr. Ahmed</div>
+            <div class="reviewer-role">Physician, Sylhet</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     WORLD SLEEP DAY 2027
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" aria-labelledby="sleep-day-heading">
+  <div class="container">
+    <div class="sleep-day-card glass-card reveal">
+      <div class="gradient-border" aria-hidden="true"></div>
+      <span class="sleep-day-icon" aria-hidden="true">🌍</span>
+      <div class="sleep-day-date">📅 March 14, 2027 — World Sleep Day</div>
+      <h2 class="section-title" id="sleep-day-heading">
+        Join Us for <span class="gradient-text">World Sleep Day 2027</span>
+      </h2>
+      <p>
+        Celebrate World Sleep Day with DSRC Dhaka — featuring free sleep screenings, expert talks, CPAP demonstrations, and special consultation rates. Early registration ensures your spot.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Register Interest →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAP & CONTACT
+     ══════════════════════════════════════════════════════════ -->
+<section class="section" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Find Us</span>
+      <h2 class="section-title" id="contact-heading">Visit Our Clinic</h2>
+      <p class="section-subtitle">Conveniently located in Dhaka, Bangladesh. Walk-ins welcome during clinic hours.</p>
+    </div>
+
+    <div class="contact-inner">
+      <!-- Map -->
+      <div class="map-frame reveal" aria-label="Map showing clinic location in Dhaka">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9024898765!2d90.3563!3d23.7504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDQ1JzAxLjQiTiA5MMKwMjEnMjIuNyJF!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="DSRC Sleep Clinic location in Dhaka, Bangladesh"
+          aria-label="Google Maps showing DSRC Sleep Clinic, Dhaka"
+        ></iframe>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info glass-card reveal" style="transition-delay:0.2s">
+        <h3>Contact Information</h3>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">DSRC Dhaka, Dhanmondi,<br/>Dhaka-1205, Bangladesh</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">
+              <a href="tel:+8801XXXXXXXXX" style="color: var(--accent-green); text-decoration: none;">+880-1XXXXXXXXX</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">🕐</div>
+          <div>
+            <div class="contact-label">Clinic Hours</div>
+            <div class="contact-value">
+              Sat–Thu: 9:00 AM – 7:00 PM<br/>
+              Friday: Closed<br/>
+              <span style="color: var(--accent-green); font-size: 0.85rem;">Sleep Studies: 24/7</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:info@sleepapneabd.com" style="color: var(--accent-blue); text-decoration: none;">info@sleepapneabd.com</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/8801XXXXXXXXX" class="btn btn-primary" style="margin-top: 1rem; width: 100%; justify-content: center;" aria-label="Contact us on WhatsApp" target="_blank" rel="noopener noreferrer">
+          💬 WhatsApp Us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════════ -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-inner">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" aria-label="SleepApneaBD Home">SleepApneaBD</a>
+        <p class="footer-tagline">
+          Bangladesh's first and most trusted sleep apnea clinic. Transforming lives through expert sleep medicine since 2005.<br/><br/>
+          বাংলাদেশের প্রথম ও সবচেয়ে বিশ্বস্ত স্লিপ অ্যাপনিয়া ক্লিনিক।
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <nav aria-label="Footer quick links">
+        <div class="footer-heading">Quick Links</div>
+        <ul class="footer-links" role="list">
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#signs">Signs &amp; Symptoms</a></li>
+          <li><a href="#why-us">Why Choose Us</a></li>
+          <li><a href="#doctor">Our Doctor</a></li>
+          <li><a href="#reviews">Patient Reviews</a></li>
+        </ul>
+      </nav>
+
+      <!-- Pages -->
+      <nav aria-label="Footer pages links">
+        <div class="footer-heading">Pages</div>
+        <ul class="footer-links" role="list">
+          <li><a href="sleep-apnea-assessment.html">Sleep Assessment</a></li>
+          <li><a href="articles.html">Articles &amp; Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#contact">Book Appointment</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; 2025 <a href="#">SleepApneaBD / DSRC Dhaka</a>. All rights reserved. Bangladesh's First Sleep Lab Since 2005.
+      </p>
+      <p class="footer-copy" style="font-size: 0.8rem; color: var(--text-muted);">
+        Designed with ❤️ for better sleep in Bangladesh
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     FLOATING WHATSAPP BUTTON
+     ══════════════════════════════════════════════════════════ -->
+<a
+  href="https://wa.me/8801XXXXXXXXX"
+  class="whatsapp-btn"
+  aria-label="Contact us on WhatsApp"
+  target="_blank"
+  rel="noopener noreferrer"
+  title="Chat with us on WhatsApp"
+>
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" role="img">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ─── 1. Theme Toggle ──────────────────────────────────── */
+  const html = document.documentElement;
+  const themeBtn = document.getElementById('themeToggle');
+  const STORAGE_KEY = 'sleepapnea-theme';
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    themeBtn.textContent = theme === 'dark' ? '🌙' : '☀️';
+    themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    localStorage.setItem(STORAGE_KEY, theme);
+  }
+
+  // Load saved or system preference
+  const saved = localStorage.getItem(STORAGE_KEY);
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+  themeBtn.addEventListener('click', function () {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* ─── 2. Navbar Scroll Behavior ────────────────────────── */
+  const navbar = document.getElementById('navbar');
+  let ticking = false;
+
+  function handleScroll() {
+    if (window.scrollY > 20) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      requestAnimationFrame(handleScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ─── 3. Mobile Hamburger Menu ──────────────────────────── */
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', function () {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.textContent = isOpen ? '✕' : '☰';
+  });
+
+  // Close mobile menu when a link is clicked
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.textContent = '☰';
+    });
+  });
+
+  /* ─── 4. Smooth Scrolling for Anchor Links ──────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      const hash = this.getAttribute('href');
+      if (hash === '#') return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+      e.preventDefault();
+      const offset = 80; // navbar height buffer
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  /* ─── 5. Scroll Reveal (Intersection Observer) ──────────── */
+  const revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+  /* ─── 6. Animated Counter ───────────────────────────────── */
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function animateCounter(el, target, suffix, duration) {
+    const start = performance.now();
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutQuart(progress);
+      const value = Math.round(eased * target);
+      el.textContent = value.toLocaleString() + (suffix || '');
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      if (!isNaN(target)) {
+        animateCounter(el, target, suffix, 2000);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(function (el) {
+    counterObserver.observe(el);
+  });
+
+})();
+</script>
 </body>
 </html>
