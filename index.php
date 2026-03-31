@@ -1,0 +1,268 @@
+<?php
+/**
+ * Sleep Apnea & Breathing – Modern Homepage
+ * Raw PHP version (no WordPress)
+ */
+
+$base_url = ''; // Set your base URL here, e.g. 'https://sleepapneabd.com'
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Apnea & Breathing Clinic | DSRC Dhaka</title>
+    <meta name="description" content="Trusted Sleep Clinic in Dhaka for Sleep Apnea diagnosis, Sleep Study, CPAP setup and snoring treatment.">
+    <style>
+    /* ═══════════════════════════════════════════════════════
+       ROOT VARIABLES
+       ═══════════════════════════════════════════════════════ */
+    :root {
+        --bg-dark: #020617;
+        --primary: #0f172a;
+        --accent: #10b4b2;
+        --accent-hover: #0f9ca0;
+        --accent-soft: #e0fbff;
+        --text-main: #111827;
+        --text-muted: #6b7280;
+        --text-slate: #4b5563;
+        --text-light: #64748b;
+        --card-bg: #ffffff;
+        --soft-bg: #edf7fb;
+        --border-soft: #e5e7eb;
+        --shadow-card: 0 12px 35px rgba(15, 23, 42, 0.08);
+        --shadow-accent: 0 18px 45px rgba(15, 118, 110, 0.45);
+        --radius-pill: 999px;
+        --radius-card: 20px;
+        --radius-lg: 26px;
+    }
+
+    body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+        background: #f8fafc;
+        color: var(--text-main);
+        overflow-x: hidden;
+    }
+
+    .section { padding: 3.5rem 1.5rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-title { font-size: 2rem; font-weight: 800; text-align: center; color: #02131f; margin: 0 0 2.25rem; }
+
+    /* HERO */
+    .hero-main { background: radial-gradient(circle at top left, #e0f2fe 0, #f4f7fb 45%, #f4f7fb 100%); padding: 3.5rem 1.5rem; }
+    .hero-main-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: minmax(0,1.35fr) minmax(0,1.3fr); gap: 2.5rem; align-items: center; }
+    .hero-main-text h1 { font-size: clamp(2.3rem,3.5vw,3rem); font-weight: 800; color: #02131f; margin: 0 0 0.75rem; }
+    .hero-kicker { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--accent); font-weight: 700; margin-bottom: 0.45rem; }
+    .hero-main-sub { font-size: 1.02rem; color: var(--text-slate); max-width: 32rem; margin-bottom: 1.1rem; }
+    .hero-main-list { list-style: disc; padding-left: 1.15rem; margin: 0 0 1.7rem; font-size: 0.96rem; color: var(--text-muted); }
+    .hero-main-list li+li { margin-top: 0.3rem; }
+    .hero-main-cta, .btn-primary, .ws-cta { display: inline-flex; align-items: center; justify-content: center; padding: 0.9rem 1.9rem; border-radius: var(--radius-pill); background: var(--accent); color: #fff; font-weight: 700; font-size: 0.98rem; text-decoration: none; box-shadow: var(--shadow-accent); transition: background .2s ease; }
+    .hero-main-cta:hover, .btn-primary:hover, .ws-cta:hover { background: var(--accent-hover); }
+    .hero-main-visual { border-radius: 28px; overflow: hidden; box-shadow: 0 22px 60px rgba(15,23,42,.35); }
+    .hero-main-visual img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+    /* FLOW PILLS */
+    .section-flow { background: #f5f7fb; padding: 3rem 1.5rem 3.5rem; }
+    .flow-rail { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: .9rem; }
+    .flow-pill { display: flex; align-items: center; gap: .9rem; padding: .85rem 1.1rem; border-radius: var(--radius-pill); background: var(--card-bg); box-shadow: 0 10px 30px rgba(15,23,42,.05); border: 1px solid #e0ecf7; }
+    .flow-num { width: 30px; height: 30px; border-radius: var(--radius-pill); background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; flex-shrink: 0; }
+    .flow-pill h3 { font-size: .98rem; font-weight: 700; margin: 0 0 2px; color: #02131f; }
+    .flow-pill p { margin: 0; font-size: .93rem; color: var(--text-slate); }
+
+    /* SIGNS CHIPS */
+    .section-signs-chip { background: var(--card-bg); padding: 3.2rem 1.5rem; }
+    .signs-chip-lead { max-width: 620px; margin: 0 auto 1.8rem; text-align: center; font-size: 1rem; color: var(--text-slate); }
+    .signs-chip-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+    .signs-chip-item { display: flex; align-items: flex-start; gap: .8rem; padding: .9rem 1.05rem; border-radius: var(--radius-pill); background: #f1f5f9; border: 1px solid #e2e8f0; box-shadow: 0 10px 26px rgba(15,23,42,.04); }
+    .signs-chip-icon { width: 38px; height: 38px; border-radius: var(--radius-pill); background: #e0f2fe; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .signs-chip-item h3 { font-size: .98rem; font-weight: 700; color: #02131f; margin: 0 0 2px; }
+    .signs-chip-item h3 a { color: inherit; text-decoration: none; }
+    .signs-chip-item h3 a:hover { color: #0ea5e9; text-decoration: underline; }
+    .signs-chip-item p { margin: 0; font-size: .93rem; color: var(--text-slate); line-height: 1.5; }
+
+    /* TRUST STRIPS */
+    .section-trust-alt { background: #0b1727; padding: 3.2rem 1.5rem 3.6rem; }
+    .section-trust-alt .section-title { color: #e5f4ff; }
+    .trust-strip { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: .9rem; }
+    .trust-row { display: flex; align-items: flex-start; gap: .9rem; padding: .95rem 1.1rem; border-radius: 18px; background: rgba(15,23,42,.95); border: 1px solid rgba(148,163,184,.45); }
+    .trust-row-icon { width: 38px; height: 38px; border-radius: var(--radius-pill); background: rgba(15,116,144,.3); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .trust-row h3 { font-size: 1rem; font-weight: 700; margin: 0 0 2px; color: #e5f4ff; }
+    .trust-row p { margin: 0; font-size: .93rem; color: #cbd5f5; line-height: 1.6; }
+
+    /* LAB BADGE & STATS */
+    .section-lab-badge { background: linear-gradient(135deg,#0b1727,#1e293b); padding: 2rem 1.5rem; text-align: center; }
+    .lab-badge-pill { display: inline-flex; align-items: center; gap: .8rem; padding: .7rem 1.6rem; background: linear-gradient(135deg,var(--accent),var(--accent-hover)); color: #fff; border-radius: var(--radius-pill); font-weight: 700; font-size: 1rem; box-shadow: 0 12px 35px rgba(16,180,178,.4); }
+    .lab-badge-pill .badge-icon { font-size: 1.3rem; }
+    .lab-badge-pill .badge-sub { font-size: .85rem; opacity: .9; font-weight: 400; }
+    .section-lab-stats { background: #f8fafc; padding: 2.5rem 1.5rem; }
+    .lab-stats-grid { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1.5rem; text-align: center; }
+    .lab-stat-card { padding: 1.5rem; background: var(--card-bg); border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+    .lab-stat-number { font-size: 2.2rem; font-weight: 800; }
+    .lab-stat-label { color: var(--text-light); font-weight: 600; }
+
+    /* SNORING + VIDEO */
+    .section-soft { background: var(--soft-bg); }
+    .two-column { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: 2rem; align-items: center; }
+    .lead { font-size: 1.05rem; color: var(--text-main); margin-bottom: 1rem; }
+    .list { list-style: disc; padding-left: 1.1rem; margin: 0 0 1.4rem; color: var(--text-muted); font-size: .95rem; }
+    .snoring-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.2rem; }
+    .btn-outline { display: inline-flex; align-items: center; justify-content: center; padding: .9rem 1.9rem; border-radius: var(--radius-pill); background: transparent; color: var(--primary); font-weight: 600; font-size: .95rem; text-decoration: none; border: 1px solid #cbd5f5; transition: all .2s ease; }
+    .btn-outline:hover { background: #f1f5f9; border-color: #94a3b8; }
+    .video-card { background: var(--bg-dark); border-radius: var(--radius-card); overflow: hidden; box-shadow: 0 18px 55px rgba(15,23,42,.55); border: 2px solid #0ea5e9; aspect-ratio: 16/10; }
+    .video-card video { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+    /* WORLD SLEEP DAY */
+    .world-sleep { padding-top: 3rem; padding-bottom: 3.2rem; background: #f5f7fb; }
+    .ws-card { max-width: 720px; margin: 0 auto; background: var(--card-bg); border-radius: var(--radius-lg); padding: 2rem 2.2rem 2.3rem; box-shadow: 0 18px 45px rgba(15,23,42,.08); border: 1px solid #e2e8f0; text-align: center; position: relative; }
+    .ws-bar { position: absolute; top: 0; left: 18%; right: 18%; height: 4px; border-radius: var(--radius-pill); background: linear-gradient(90deg,#22c55e,#0ea5e9,#6366f1); transform: translateY(-50%); }
+    .ws-badge { display: inline-flex; align-items: center; gap: .3rem; padding: .2rem .7rem; border-radius: var(--radius-pill); font-size: .75rem; text-transform: uppercase; letter-spacing: .13em; background: #ecfeff; color: #0e7490; border: 1px solid #bae6fd; margin-bottom: .4rem; }
+    .ws-title { font-size: 1.9rem; font-weight: 800; color: #02131f; margin: 0; }
+    .ws-line-main { font-size: 1.02rem; color: #334155; margin: .6rem 0 .3rem; }
+    .ws-line-sub { font-size: .96rem; color: var(--text-light); margin: 0 0 1.4rem; }
+
+    /* RESPONSIVE */
+    @media(max-width:900px) { .hero-main-inner, .two-column { grid-template-columns: 1fr; } }
+    @media(max-width:768px) { .signs-chip-grid { grid-template-columns: 1fr; } }
+    @media(max-width:640px) { .section { padding: 3rem 1.1rem; } .ws-card { padding: 1.8rem 1.4rem 2.1rem; border-radius: 22px; } .ws-title { font-size: 1.6rem; } .ws-bar { left: 20%; right: 20%; } .snoring-actions { flex-direction: column; align-items: stretch; } .snoring-actions a { width: 100%; justify-content: center; } }
+    </style>
+</head>
+<body>
+
+<main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero-main">
+        <div class="hero-main-inner">
+            <div class="hero-main-text">
+                <p class="hero-kicker">Sleep Doctor in Dhaka | Sleep Specialist Clinic</p>
+                <h1>ঘুম ভাঙুক. ক্লান্তি নয়</h1>
+                <p class="hero-main-sub">
+                    Peaceful ঘুম, সহজ শ্বাস-প্রশ্বাস আর কম নাক ডাকার জন্য expert sleep apnea diagnosis &amp; personalized treatment.
+                    Trusted <strong>Sleep Clinic in Dhaka</strong> for <strong>Sleep Disorder</strong>,
+                    <strong>Insomnia</strong> and professional <strong>Sleep Study</strong> by experienced
+                    <strong>Sleep Apnea Doctors</strong>.
+                </p>
+                <ul class="hero-main-list">
+                    <li>Lab sleep test for snoring and breathing pauses.</li>
+                    <li>Comfort-focused CPAP / BiPAP / oral appliance setup.</li>
+                    <li>Consult experienced Sleep Apnea Doctors in Dhaka, Bangladesh.</li>
+                </ul>
+                <a href="<?php echo $base_url; ?>/sleep-apnea-assessment" class="hero-main-cta">Book Your Consultation</a>
+            </div>
+            <div class="hero-main-visual">
+                <img src="https://sleepapneabd.com/wp-content/uploads/2025/11/hero-image.webp"
+                     alt="Sleep Doctor in Dhaka helping patient with Sleep Apnea diagnosis and Sleep Study"
+                     width="600" height="450" loading="eager" fetchpriority="high" decoding="async">
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOW PILLS -->
+    <section class="section section-flow">
+        <div class="section-inner">
+            <h2 class="section-title">How We Fix Your Night Breathing</h2>
+            <div class="flow-rail">
+                <div class="flow-pill"><span class="flow-num">1</span><div><h3>Quick Sleep &amp; Breathing Check</h3><p>Short ঘুম &amp; নাক ডাকা screening – clinic or online, only a few minutes।</p></div></div>
+                <div class="flow-pill"><span class="flow-num">2</span><div><h3>Measure Night-Time Breathing</h3><p>রাতে oxygen, airflow ও নাক ডাকা রেকর্ড হয়ে clear রিপোর্ট তৈরি হয়।</p></div></div>
+                <div class="flow-pill"><span class="flow-num">3</span><div><h3>Keep the Airway Open</h3><p>CPAP, BiPAP বা oral device দিয়ে ঘুমের সময় শ্বাস-প্রশ্বাস smooth রাখা হয়।</p></div></div>
+                <div class="flow-pill"><span class="flow-num">4</span><div><h3>Deep Sleep, Fresh Morning</h3><p>ভালো ঘুম, কম নাক ডাকা ও বেশি এনার্জি – friendly follow-up সহ।</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNS -->
+    <section class="section section-signs-chip">
+        <div class="section-inner">
+            <h2 class="section-title">Signs Your Night Breathing Needs Help</h2>
+            <p class="signs-chip-lead">নিচের লক্ষণগুলো বারবার হলে ঘুমের মধ্যে শ্বাস-প্রশ্বাস কেমন চলছে তা দেখে নেওয়া ভালো।</p>
+            <div class="signs-chip-grid">
+                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">😵‍💫</div><div><h3><a href="<?php echo $base_url; ?>/broken-sleep-at-night/">ঘুম ভেঙে যায়</a></h3><p>রাতে বারবার জেগে ওঠা, deep sleep ঠিকমতো হয় না, সকালেও ক্লান্ত লাগে।</p></div></article>
+                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">😮‍💨</div><div><h3><a href="<?php echo $base_url; ?>/breathing-stops-during-sleep/">শ্বাস আটকে যায়</a></h3><p>ঘুমের মধ্যে কিছু সেকেন্ড শ্বাস বন্ধ, তারপর জোরে গ্যাস্প করে শ্বাস নেওয়া।</p></div></article>
+                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">😴</div><div><h3><a href="<?php echo $base_url; ?>/snoring-problem-at-night/">জোরে নাক ডাকা</a></h3><p>নাক ডাকার শব্দ খুব জোরে, মাঝে choking বা হাঁপিয়ে ওঠার মতো শব্দ শোনা যায়।</p></div></article>
+                <article class="signs-chip-item"><div class="signs-chip-icon" aria-hidden="true">🥱</div><div><h3><a href="<?php echo $base_url; ?>/daytime-sleepiness/">দিনভর ঘুম ঘুম ভাব</a></h3><p>অফিসে চোখ ঘুমে আসে, concentration কমে যায়, মাথা ভার লাগতে থাকে।</p></div></article>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="section section-trust-alt">
+        <div class="section-inner">
+            <h2 class="section-title">Why Patients Trust Our Sleep &amp; Breathing Care</h2>
+            <div class="trust-strip">
+                <article class="trust-row"><div class="trust-row-icon" aria-hidden="true">👨‍⚕️</div><div><h3>Specialised Sleep Apnea Team</h3><p>Dedicated ডাক্তার টিম শুধু sleep apnea ও শ্বাস-প্রশ্বাসের সমস্যা নিয়ে কাজ করে – তাই diagnosis বেশি নির্ভুল।</p></div></article>
+                <article class="trust-row"><div class="trust-row-icon" aria-hidden="true">📊</div><div><h3>Clear, Data-Driven Report</h3><p>একই রিপোর্টে oxygen, airflow, নাক ডাকা ও heart-rate দেখা যায় – আপনি নিজেও সহজে বুঝতে পারবেন।</p></div></article>
+                <article class="trust-row"><div class="trust-row-icon" aria-hidden="true">🤝</div><div><h3>Comfort &amp; Long-Term Support</h3><p>CPAP / device আরামদায়ক করে সেট-আপ, তারপর leak, pressure, habit – সব কিছুর জন্য চলমান follow-up ও guide।</p></div></article>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAB BADGE -->
+    <section class="section section-lab-badge" aria-label="First Sleep Lab in Bangladesh">
+        <div class="section-inner">
+            <div class="lab-badge-pill">
+                <span class="badge-icon" aria-hidden="true">🏆</span>
+                <strong>বাংলাদেশের প্রথম Sleep Lab - Since 2005</strong>
+                <span class="badge-sub">by Prof. Dr. AKM Mosharraf Hossain</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section section-lab-stats" aria-label="Sleep lab statistics">
+        <div class="section-inner">
+            <div class="lab-stats-grid">
+                <div class="lab-stat-card"><div class="lab-stat-number" style="color:var(--accent);">২০+</div><div class="lab-stat-label">বছরের অভিজ্ঞতা</div></div>
+                <div class="lab-stat-card"><div class="lab-stat-number" style="color:#0ea5e9;">1st</div><div class="lab-stat-label">Sleep Lab</div></div>
+                <div class="lab-stat-card"><div class="lab-stat-number" style="color:#6366f1;">হাজারো</div><div class="lab-stat-label">রোগী সুস্থ</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SNORING + VIDEO -->
+    <section class="section section-soft">
+        <div class="section-inner">
+            <div class="two-column">
+                <div>
+                    <h2 class="section-title" style="text-align:left;">Snoring Is a Breathing Warning</h2>
+                    <p class="lead">Snoring is often the first sign that your airway is collapsing while you sleep.</p>
+                    <ul class="list">
+                        <li>Easy breathing test can show your sleep apnea risk in minutes.</li>
+                        <li>Most patients feel better sleep and calmer breathing within the first weeks of treatment.</li>
+                    </ul>
+                    <div class="snoring-actions">
+                        <a href="<?php echo $base_url; ?>/sleep-apnea-assessment" class="btn-primary">Check My Snoring Risk</a>
+                        <a href="<?php echo $base_url; ?>/articles/" class="btn-outline">Read More Articles</a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <video playsinline controls preload="none" loading="lazy"
+                           poster="https://sleepapneabd.com/wp-content/uploads/2025/11/snoring-thumb.webp">
+                        <source src="https://sleepapneabd.com/wp-content/uploads/2025/11/snoring-h264.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORLD SLEEP DAY -->
+    <section class="section world-sleep">
+        <div class="section-inner">
+            <div class="ws-card">
+                <div class="ws-bar" aria-hidden="true"></div>
+                <div class="ws-header">
+                    <span class="ws-badge">Special Awareness Day</span>
+                    <h2 class="ws-title">World Sleep Day 2027</h2>
+                </div>
+                <p class="ws-line-main">🌙 World Sleep Day is on <strong>September, 10-15</strong></p>
+                <p class="ws-line-sub">ভালো ঘুম ও সুস্থ শ্বাস-প্রশ্বাস নিয়ে ছোট্ট awareness সেশনে আমাদের সাথে যোগ দিন।</p>
+                <a href="<?php echo $base_url; ?>/sleep-apnea-assessment" class="ws-cta">Join Our World Sleep Day Event</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>
