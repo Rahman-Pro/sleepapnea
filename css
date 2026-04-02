@@ -1,0 +1,96 @@
+/* =============================================
+   LOGO SHIFT FIX — Services & Contact Pages
+   সব page এ header/logo একই position এ থাকবে
+============================================= */
+
+/* Step 1: Header কে full-width consistent রাখুন */
+.site-header,
+header#masthead,
+header.site-header,
+.dsrc-header,
+#masthead {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 !important;
+}
+
+/* Step 2: Header এর ভিতরের container — সব page এ একই width */
+.site-header > .wrap,
+.site-header > .container,
+.site-header > .header-inner,
+.site-header > div,
+header#masthead > .wrap,
+header#masthead > .container,
+header#masthead > div,
+.dsrc-header > .wrap,
+.dsrc-header > .container {
+    max-width: 1200px !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Step 3: Logo — fixed position, কোনো page এ shift হবে না */
+.site-branding,
+.custom-logo-link,
+.site-header .logo,
+.dsrc-header .logo,
+header .logo,
+.header-logo,
+.navbar-brand {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    left: 0 !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    min-width: fit-content !important;
+}
+
+/* Step 4: Logo image — consistent size সব page এ */
+.custom-logo,
+.site-branding img,
+.site-header .logo img,
+header .logo img,
+.header-logo img {
+    max-height: 65px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+/* Step 5: Navigation alignment fix */
+.main-navigation,
+.site-header nav,
+.primary-menu-container,
+#site-navigation {
+    margin-left: auto !important;
+    flex-grow: 1 !important;
+}
+
+/* Step 6: Services & Contact page specific fix */
+body.page-template-default .site-header > .wrap,
+body.page-template-default .site-header > .container,
+body.page-template-default .site-header > div,
+body.page-slug-services .site-header > .wrap,
+body.page-slug-services .site-header > div,
+body.page-slug-contact .site-header > .wrap,
+body.page-slug-contact .site-header > div {
+    max-width: 1200px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Step 7: Scrollbar shift prevention
+   — যখন কোনো page এ scrollbar আসে আর কোনোটায় আসে না,
+     তখন page width 15-17px কম হয় → header shift হয় */
+html {
+    overflow-y: scroll !important; /* সব page এ scrollbar force করুন */
+}
